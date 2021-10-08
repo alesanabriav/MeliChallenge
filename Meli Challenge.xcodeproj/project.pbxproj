@@ -9,13 +9,16 @@
 /* Begin PBXBuildFile section */
 		71CCCA5B2710F344009885D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA5A2710F344009885D2 /* AppDelegate.swift */; };
 		71CCCA5D2710F344009885D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA5C2710F344009885D2 /* SceneDelegate.swift */; };
-		71CCCA5F2710F344009885D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA5E2710F344009885D2 /* ViewController.swift */; };
-		71CCCA622710F344009885D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CCCA602710F344009885D2 /* Main.storyboard */; };
+		71CCCA5F2710F344009885D2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA5E2710F344009885D2 /* MainViewController.swift */; };
 		71CCCA642710F348009885D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CCCA632710F348009885D2 /* Assets.xcassets */; };
 		71CCCA672710F348009885D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CCCA652710F348009885D2 /* LaunchScreen.storyboard */; };
 		71CCCA722710F348009885D2 /* Meli_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA712710F348009885D2 /* Meli_ChallengeTests.swift */; };
 		71CCCA7C2710F348009885D2 /* Meli_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA7B2710F348009885D2 /* Meli_ChallengeUITests.swift */; };
 		71CCCA7E2710F348009885D2 /* Meli_ChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA7D2710F348009885D2 /* Meli_ChallengeUITestsLaunchTests.swift */; };
+		71CCCA8E2710F75D009885D2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA8D2710F75D009885D2 /* SearchViewController.swift */; };
+		71CCCA902710F77F009885D2 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA8F2710F77F009885D2 /* ItemViewController.swift */; };
+		71CCCA942710F7F0009885D2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA932710F7F0009885D2 /* UIColor.swift */; };
+		71CCCA992710FB53009885D2 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA982710FB53009885D2 /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +42,7 @@
 		71CCCA572710F344009885D2 /* Meli Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meli Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CCCA5A2710F344009885D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71CCCA5C2710F344009885D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		71CCCA5E2710F344009885D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		71CCCA612710F344009885D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		71CCCA5E2710F344009885D2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		71CCCA632710F348009885D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71CCCA662710F348009885D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71CCCA682710F348009885D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +51,10 @@
 		71CCCA772710F348009885D2 /* Meli ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Meli ChallengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CCCA7B2710F348009885D2 /* Meli_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meli_ChallengeUITests.swift; sourceTree = "<group>"; };
 		71CCCA7D2710F348009885D2 /* Meli_ChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meli_ChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		71CCCA8D2710F75D009885D2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		71CCCA8F2710F77F009885D2 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		71CCCA932710F7F0009885D2 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		71CCCA982710FB53009885D2 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +105,11 @@
 		71CCCA592710F344009885D2 /* Meli Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				71CCCA972710FB3E009885D2 /* Shared */,
+				71CCCA952710F8B8009885D2 /* Sections */,
+				71CCCA922710F7D0009885D2 /* Extensions */,
 				71CCCA5A2710F344009885D2 /* AppDelegate.swift */,
 				71CCCA5C2710F344009885D2 /* SceneDelegate.swift */,
-				71CCCA5E2710F344009885D2 /* ViewController.swift */,
-				71CCCA602710F344009885D2 /* Main.storyboard */,
 				71CCCA632710F348009885D2 /* Assets.xcassets */,
 				71CCCA652710F348009885D2 /* LaunchScreen.storyboard */,
 				71CCCA682710F348009885D2 /* Info.plist */,
@@ -125,6 +132,64 @@
 				71CCCA7D2710F348009885D2 /* Meli_ChallengeUITestsLaunchTests.swift */,
 			);
 			path = "Meli ChallengeUITests";
+			sourceTree = "<group>";
+		};
+		71CCCA8A2710F6E7009885D2 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				71CCCA8C2710F733009885D2 /* Recent */,
+				71CCCA8D2710F75D009885D2 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		71CCCA8B2710F6F4009885D2 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				71CCCA8F2710F77F009885D2 /* ItemViewController.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		71CCCA8C2710F733009885D2 /* Recent */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Recent;
+			sourceTree = "<group>";
+		};
+		71CCCA922710F7D0009885D2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				71CCCA932710F7F0009885D2 /* UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		71CCCA952710F8B8009885D2 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				71CCCA962710F8CC009885D2 /* Main */,
+				71CCCA8B2710F6F4009885D2 /* Item */,
+				71CCCA8A2710F6E7009885D2 /* Search */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		71CCCA962710F8CC009885D2 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				71CCCA5E2710F344009885D2 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		71CCCA972710FB3E009885D2 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				71CCCA982710FB53009885D2 /* HeaderView.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +298,6 @@
 			files = (
 				71CCCA672710F348009885D2 /* LaunchScreen.storyboard in Resources */,
 				71CCCA642710F348009885D2 /* Assets.xcassets in Resources */,
-				71CCCA622710F344009885D2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +322,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71CCCA5F2710F344009885D2 /* ViewController.swift in Sources */,
+				71CCCA5F2710F344009885D2 /* MainViewController.swift in Sources */,
+				71CCCA942710F7F0009885D2 /* UIColor.swift in Sources */,
 				71CCCA5B2710F344009885D2 /* AppDelegate.swift in Sources */,
+				71CCCA902710F77F009885D2 /* ItemViewController.swift in Sources */,
+				71CCCA8E2710F75D009885D2 /* SearchViewController.swift in Sources */,
 				71CCCA5D2710F344009885D2 /* SceneDelegate.swift in Sources */,
+				71CCCA992710FB53009885D2 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +365,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		71CCCA602710F344009885D2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				71CCCA612710F344009885D2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		71CCCA652710F348009885D2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -444,9 +504,10 @@
 				INFOPLIST_FILE = "Meli Challenge/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -472,9 +533,10 @@
 				INFOPLIST_FILE = "Meli Challenge/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
