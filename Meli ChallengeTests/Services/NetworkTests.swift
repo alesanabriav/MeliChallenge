@@ -10,30 +10,40 @@ import XCTest
 
 class NetworkTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
     func testShouldGet() {
+
+		let exp = expectation(description: "get results")
 
 		let network = Network.shared
 
-		network.get(SearchResponse.self, from: "/search?q=iphone") { result in
+		let session = URLSessionMock()
+
+		session.dataStub = SearchResponseJSON.data(using: .utf8)
+
+		network.session = session
+
+		network.get(SearchResponse.self, from: "/search?q=iphone&limit=1") { result in
 
 			switch result {
 			case .success(let searchRes):
 
 				print(searchRes)
 
+				XCTAssertEqual(searchRes.paging.limit, 1)
+
+				XCTAssertEqual(searchRes.results.count, 1)
+
+				exp.fulfill()
+
 			case .failure(let err):
 
-				print(err)
+				XCTFail()
+
+				Logger.log(.error, error: err)
 			}
 		}
+
+		waitForExpectations(timeout: 3, handler: nil)
         
     }
 

@@ -7,30 +7,30 @@
 
 import Foundation
 
-struct SearchResults : Codable {
-
-	var id: String
-	var siteId: String
-	var title: String
-	var seller: Seller
-	var price: Int
-	var currencyId: String
-
-	struct Seller : Codable {
-		var id: Int
-	}
-}
-
 struct SearchResponse : Codable {
 
 	var site_id: String
 	var paging: Paging
-	var results: SearchResults
+	var results: [SearchResult]
 
 	struct Paging : Codable {
 		var total: Int
 		var offset: Int
 		var limit: Int
-		var primaryResults: Int
+		var primary_results: Int
+	}
+}
+
+struct SearchResult : Codable {
+
+	var id: String
+	var site_id: String
+	var title: String
+	var seller: Seller
+	var price: Int
+	var currency_id: String
+
+	struct Seller : Codable {
+		var id: Int
 	}
 }
