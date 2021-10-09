@@ -22,13 +22,32 @@ struct SearchResponse : Codable {
 }
 
 struct SearchResult : Codable {
-
 	var id: String
 	var site_id: String
 	var title: String
 	var seller: Seller
 	var price: Int
 	var currency_id: String
+	var thumbnail: String
+	var accepts_mercadopago: Bool
+	var installments: Installments
+	var shipping: Shipping
+	var available_quantity: Int
+	var buying_mode: String
+	var condition: String
+
+	struct Shipping : Codable {
+		var free_shipping: Bool
+		var mode: String
+		var store_pick_up: Bool
+	}
+
+	struct Installments : Codable {
+		var quantity: Int
+		var amount: Double
+		var rate: Int
+		var currency_id: String
+	}
 
 	struct Seller : Codable {
 		var id: Int

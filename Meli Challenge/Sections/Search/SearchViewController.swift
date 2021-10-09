@@ -13,6 +13,17 @@ class SearchViewController : UIViewController {
 
 	private lazy var headerView = SearchHeaderView()
 
+	private lazy var resultsView: SearchResultsView = {
+
+		let resultsView = SearchResultsView(frame: .zero, viewModel: viewModel)
+
+		resultsView.isHidden = true
+
+		resultsView.layer.opacity = 0
+
+		return resultsView
+	}()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,11 +31,22 @@ class SearchViewController : UIViewController {
 
 		headerView.delegate = self
 
-		viewModel.searchResponse.observe { res in
+		viewModel.searchResponse.observe { [weak self] res in
+			
 
-			Logger.log(.message , msg: "\(res)")
+			if res.results.count > 0 {
+
+				self?.showResults()
+			}
 		}
     }
+
+	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+
+		super.viewWillTransition(to: size, with: coordinator)
+
+		resultsView.relayout()
+	}
 
 	private func setLayout() {
 
@@ -32,13 +54,33 @@ class SearchViewController : UIViewController {
 
 		view.addSubview(headerView)
 
+		view.addSubview(resultsView)
+
 		NSLayoutConstraint.activate([
 			headerView.topAnchor.constraint(equalTo: view.topAnchor),
 			headerView.leftAnchor.constraint(equalTo: view.leftAnchor),
 			headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
-			headerView.heightAnchor.constraint(equalToConstant: 120)
+			headerView.heightAnchor.constraint(equalToConstant: 120),
+
+			resultsView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+			resultsView.leftAnchor.constraint(equalTo: view.leftAnchor),
+			resultsView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			resultsView.rightAnchor.constraint(equalTo: view.rightAnchor)
 		])
 	}
+
+	func showResults(_ show: Bool = true) {
+
+		DispatchQueue.main.async {
+
+			self.resultsView.isHidden = !show
+
+			self.resultsView.layer.opacity = show ? 1 : 0
+
+			self.view.layoutIfNeeded()
+		}
+	}
+
 
 }
 

@@ -10,6 +10,8 @@ class SearchResultsView : UIView {
 
 	private var _viewModel: SearchViewModel
 
+	let resultsCollection = SearchResultsCollectionView()
+
 	init(frame: CGRect, viewModel: SearchViewModel) {
 
 		_viewModel = viewModel
@@ -18,11 +20,35 @@ class SearchResultsView : UIView {
 
 		setLayout()
 
+		_viewModel.searchResponse.observe { [weak self] res in
+
+			self?.resultsCollection.results = res.results
+		}
 	}
 
+	func relayout() {
+
+		DispatchQueue.main.async {
+
+			self.resultsCollection.collectionViewLayout.invalidateLayout()
+
+			self.layoutIfNeeded()
+		}
+
+	}
 
 	private func setLayout() {
 
+		translatesAutoresizingMaskIntoConstraints = false
+
+		addSubview(resultsCollection)
+
+		NSLayoutConstraint.activate([
+			resultsCollection.topAnchor.constraint(equalTo: topAnchor),
+			resultsCollection.leftAnchor.constraint(equalTo: leftAnchor),
+			resultsCollection.bottomAnchor.constraint(equalTo: bottomAnchor),
+			resultsCollection.rightAnchor.constraint(equalTo: rightAnchor)
+		])
 	}
 
 	required init?(coder: NSCoder) {
