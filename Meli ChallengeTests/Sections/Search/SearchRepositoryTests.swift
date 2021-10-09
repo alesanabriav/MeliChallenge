@@ -10,23 +10,34 @@ import XCTest
 
 class SearchRepositoryTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+	let session = URLSessionMock()
+
+	override func tearDownWithError() throws {
+
+		session.dataStub = nil
+	}
 
     func testShouldSearchByQuery() throws {
 
 		let exp = expectation(description: "get query results")
 
+		session.dataStub = SearchResponseJSON.data(using: .utf8)
+
+		Network.shared.session = session
+
 		let repo = SearchRepository()
 
-		repo.searchBy(query: "iphone") { result in
+		let limit = 1
+
+		repo.searchBy(query: "iphone", limit: limit) { result in
 
 			switch result {
 
 			case .success(let res):
 
-				XCTAssertEqual(res.results.count, 50)
+				XCTAssertEqual(res.results.count, limit)
+
+				XCTAssertEqual(res.paging.limit, limit)
 
 				exp.fulfill()
 
