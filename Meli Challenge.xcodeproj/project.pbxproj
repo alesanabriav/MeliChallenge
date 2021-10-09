@@ -12,7 +12,6 @@
 		71CCCA5F2710F344009885D2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA5E2710F344009885D2 /* MainViewController.swift */; };
 		71CCCA642710F348009885D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CCCA632710F348009885D2 /* Assets.xcassets */; };
 		71CCCA672710F348009885D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CCCA652710F348009885D2 /* LaunchScreen.storyboard */; };
-		71CCCA722710F348009885D2 /* Meli_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA712710F348009885D2 /* Meli_ChallengeTests.swift */; };
 		71CCCA7C2710F348009885D2 /* Meli_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA7B2710F348009885D2 /* Meli_ChallengeUITests.swift */; };
 		71CCCA7E2710F348009885D2 /* Meli_ChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA7D2710F348009885D2 /* Meli_ChallengeUITestsLaunchTests.swift */; };
 		71CCCA8E2710F75D009885D2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA8D2710F75D009885D2 /* SearchViewController.swift */; };
@@ -59,7 +58,6 @@
 		71CCCA662710F348009885D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71CCCA682710F348009885D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71CCCA6D2710F348009885D2 /* Meli ChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Meli ChallengeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		71CCCA712710F348009885D2 /* Meli_ChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meli_ChallengeTests.swift; sourceTree = "<group>"; };
 		71CCCA772710F348009885D2 /* Meli ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Meli ChallengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CCCA7B2710F348009885D2 /* Meli_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meli_ChallengeUITests.swift; sourceTree = "<group>"; };
 		71CCCA7D2710F348009885D2 /* Meli_ChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meli_ChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 				71D310242711F579002689FE /* Mocks */,
 				71D3101B2711F262002689FE /* Sections */,
 				71D310072711E222002689FE /* Services */,
-				71CCCA712710F348009885D2 /* Meli_ChallengeTests.swift */,
 			);
 			path = "Meli ChallengeTests";
 			sourceTree = "<group>";
@@ -439,7 +436,6 @@
 				71D3100B2711E246002689FE /* NetworkTests.swift in Sources */,
 				71D310262711F5BC002689FE /* SearchResponseJSON.swift in Sources */,
 				71D310112711E7A1002689FE /* LoggerTests.swift in Sources */,
-				71CCCA722710F348009885D2 /* Meli_ChallengeTests.swift in Sources */,
 				71D3101E2711F282002689FE /* SearchRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,16 +22,18 @@ class NetworkTests: XCTestCase {
 
 		network.session = session
 
-		network.get(SearchResponse.self, from: "/search?q=iphone&limit=1") { result in
+		let limit = 10
+
+		network.get(SearchResponse.self, from: "/search?q=iphone&limit=\(limit)") { result in
 
 			switch result {
 			case .success(let searchRes):
 
 				print(searchRes)
 
-				XCTAssertEqual(searchRes.paging.limit, 1)
+				XCTAssertEqual(searchRes.paging.limit, limit)
 
-				XCTAssertEqual(searchRes.results.count, 1)
+				XCTAssertEqual(searchRes.results.count, limit)
 
 				exp.fulfill()
 

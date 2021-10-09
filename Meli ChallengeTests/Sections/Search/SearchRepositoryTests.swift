@@ -27,7 +27,7 @@ class SearchRepositoryTests: XCTestCase {
 
 		let repo = SearchRepository()
 
-		let limit = 1
+		let limit = 10
 
 		repo.searchBy(query: "iphone", limit: limit) { result in
 
