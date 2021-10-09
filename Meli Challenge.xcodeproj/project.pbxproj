@@ -34,6 +34,8 @@
 		71D81B232711FC01007CE54D /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D81B222711FC01007CE54D /* ObservableTests.swift */; };
 		71D81B252711FDEF007CE54D /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D81B242711FDEF007CE54D /* SearchViewModelTests.swift */; };
 		71D81B2727120453007CE54D /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D81B2627120453007CE54D /* SearchHeaderView.swift */; };
+		71D81B292712080D007CE54D /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D81B282712080D007CE54D /* UIFont.swift */; };
+		71D81B2B2712158C007CE54D /* SearchHeaderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D81B2A2712158C007CE54D /* SearchHeaderViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		71D81B222711FC01007CE54D /* ObservableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
 		71D81B242711FDEF007CE54D /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		71D81B2627120453007CE54D /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
+		71D81B282712080D007CE54D /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		71D81B2A2712158C007CE54D /* SearchHeaderViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,7 @@
 				71D310172711F0BF002689FE /* SearchRepository.swift */,
 				71D310192711F0CF002689FE /* SearchViewModel.swift */,
 				71D81B2627120453007CE54D /* SearchHeaderView.swift */,
+				71D81B2A2712158C007CE54D /* SearchHeaderViewDelegate.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				71CCCA932710F7F0009885D2 /* UIColor.swift */,
+				71D81B282712080D007CE54D /* UIFont.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -440,12 +446,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				71D310212711F3C3002689FE /* URLSessionProtocol.swift in Sources */,
+				71D81B292712080D007CE54D /* UIFont.swift in Sources */,
 				71D81B202711FB85007CE54D /* Observable.swift in Sources */,
 				71CCCA5F2710F344009885D2 /* MainViewController.swift in Sources */,
 				71CCCA942710F7F0009885D2 /* UIColor.swift in Sources */,
 				71D310062711DFFF002689FE /* Network.swift in Sources */,
 				71D310182711F0BF002689FE /* SearchRepository.swift in Sources */,
 				71CCCA5B2710F344009885D2 /* AppDelegate.swift in Sources */,
+				71D81B2B2712158C007CE54D /* SearchHeaderViewDelegate.swift in Sources */,
 				71D3101A2711F0CF002689FE /* SearchViewModel.swift in Sources */,
 				71CCCA902710F77F009885D2 /* ItemViewController.swift in Sources */,
 				71D310142711EFEA002689FE /* SearchResultsView.swift in Sources */,

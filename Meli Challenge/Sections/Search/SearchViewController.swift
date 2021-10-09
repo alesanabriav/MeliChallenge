@@ -7,7 +7,9 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController : UIViewController {
+
+	private let viewModel = SearchViewModel()
 
 	private lazy var headerView = SearchHeaderView()
 
@@ -15,6 +17,13 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
 
 		setLayout()
+
+		headerView.delegate = self
+
+		viewModel.searchResponse.observe { res in
+
+			Logger.log(.message , msg: "\(res)")
+		}
     }
 
 	private func setLayout() {
@@ -30,5 +39,25 @@ class SearchViewController: UIViewController {
 			headerView.heightAnchor.constraint(equalToConstant: 120)
 		])
 	}
+
+}
+
+extension SearchViewController : SearchHeaderViewDelegate {
+
+	func searchFocus() {
+
+	}
+
+	func searchEnd(_ query: String) {
+
+		Logger.log(.message, msg: "search end: \(query)")
+
+		viewModel.searchBy(query: query)
+	}
+
+	func searchChange(_ query: String) {
+
+	}
+
 
 }
