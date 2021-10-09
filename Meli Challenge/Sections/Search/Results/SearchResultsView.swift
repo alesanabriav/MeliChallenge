@@ -8,11 +8,18 @@ import UIKit
 
 class SearchResultsView : UIView {
 
-	override init(frame: CGRect) {
+	private var _viewModel: SearchViewModel
+
+	init(frame: CGRect, viewModel: SearchViewModel) {
+
+		_viewModel = viewModel
+
 		super.init(frame: frame)
 
 		setLayout()
+
 	}
+
 
 	private func setLayout() {
 

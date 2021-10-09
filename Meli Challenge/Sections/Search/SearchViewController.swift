@@ -9,7 +9,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-	private lazy var headerView = HeaderView()
+	private lazy var headerView = SearchHeaderView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class SearchViewController: UIViewController {
 			headerView.topAnchor.constraint(equalTo: view.topAnchor),
 			headerView.leftAnchor.constraint(equalTo: view.leftAnchor),
 			headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
-			headerView.heightAnchor.constraint(equalToConstant: 100)
+			headerView.heightAnchor.constraint(equalToConstant: 120)
 		])
 	}
 
