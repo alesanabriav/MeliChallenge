@@ -162,6 +162,14 @@ class SearchHeaderView : UIView {
 		}
 	}
 
+	func setQuery(_ query: String) {
+
+		if let currentText = searchTextField.text, currentText != query {
+
+			searchTextField.text = query
+		}
+	}
+
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
@@ -192,8 +200,6 @@ extension SearchHeaderView : UITextFieldDelegate {
 		textField.resignFirstResponder()
 
 		let query = textField.text ?? ""
-
-		Logger.log(.message, msg: query)
 
 		delegate?.searchEnd(query)
 

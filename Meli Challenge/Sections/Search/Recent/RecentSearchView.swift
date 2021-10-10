@@ -30,6 +30,11 @@ class RecentSearchView : UIView {
 
 			self?.tableView.queries = queries
 		}
+
+		tableView.onSelected = { [weak self] query in
+
+			self?._viewModel.searchQuery.value = query
+		}
 	}
 
 	private func setLayout() {

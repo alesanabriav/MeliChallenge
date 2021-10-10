@@ -37,9 +37,11 @@ class SearchResultsCollectionView: UICollectionView {
 
 	private func handleResults() {
 
-		DispatchQueue.main.async {
+		DispatchQueue.main.async { [weak self] in
 
-			self.reloadData()
+			self?.setContentOffset(.zero, animated: false)
+
+			self?.reloadData()
 		}
 	}
 

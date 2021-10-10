@@ -43,12 +43,18 @@ class SearchViewController : UIViewController {
 		headerView.delegate = self
 
 		viewModel.searchResponse.observe { [weak self] res in
-			
 
 			if res.results.count > 0 {
 
+				self?.showRecent(false)
+
 				self?.showResults()
 			}
+		}
+
+		viewModel.searchQuery.observe { [weak self] query in
+
+			self?.handleQuery(query)
 		}
     }
 
@@ -105,14 +111,33 @@ class SearchViewController : UIViewController {
 
 		viewModel.getRecentQueries()
 
-		DispatchQueue.main.async {
+		DispatchQueue.main.async { [weak self] in
 
+			guard let self = self else {
+				return
+			}
+			
 			self.recentView.isHidden = !show
 
 			self.recentView.layer.opacity = show ? 1 : 0
 
 			self.view.layoutIfNeeded()
 		}
+	}
+
+	private func handleQuery(_ query: String) {
+
+		DispatchQueue.main.async { [weak self] in
+
+			guard let self = self else {
+				return
+			}
+
+			self.headerView.setQuery(query)
+
+			self.viewModel.searchBy(query: query)
+		}
+
 	}
 
 }

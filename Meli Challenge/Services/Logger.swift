@@ -32,8 +32,11 @@ struct Logger {
 				logMsg = "ERROR: \(msg)"
 			}
 
+			#if DEBUG
+
 			NSLog(logMsg)
 
+			#endif
 		case .message:
 
 			logMsg = "MSG: \(msg)"

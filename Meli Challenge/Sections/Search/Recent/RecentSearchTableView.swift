@@ -9,6 +9,8 @@ import UIKit
 
 class RecentSearchTableView : UITableView {
 
+	var onSelected: ((String) -> Void)?
+
 	var queries: [String]? {
 
 		didSet {
@@ -43,7 +45,10 @@ class RecentSearchTableView : UITableView {
 
 	private func handleQueries() {
 
-		reloadData()
+		DispatchQueue.main.async { [weak self] in
+
+			self?.reloadData()
+		}
 	}
 }
 
@@ -69,4 +74,11 @@ extension RecentSearchTableView : UITableViewDataSource {
 
 extension RecentSearchTableView : UITableViewDelegate {
 
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+		if let query = queries?[indexPath.row] {
+
+			onSelected?(query)
+		}
+	}
 }

@@ -19,6 +19,8 @@ class SearchViewModel {
 
 	var recentQueries = Observable<[String]>([])
 
+	var searchQuery = Observable<String>("")
+
 	func searchBy(query: String) {
 
 		searchRepo.searchBy(query: query, limit: 50) { [weak self] result in
