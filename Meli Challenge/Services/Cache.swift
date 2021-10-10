@@ -79,6 +79,11 @@ class Cache {
 
 	}
 
+	func remove(forKey: String) {
+
+		userDefaults.removeObject(forKey: forKey)
+	}
+
 	func keys(by query: String) -> [String] {
 
 		var keys: [String] = []

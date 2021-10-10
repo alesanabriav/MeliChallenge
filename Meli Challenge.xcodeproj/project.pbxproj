@@ -46,6 +46,7 @@
 		71D8F3D627133C570084DDE7 /* RecentSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F3D527133C570084DDE7 /* RecentSearchView.swift */; };
 		71D8F3D8271342660084DDE7 /* RecentSearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F3D7271342660084DDE7 /* RecentSearchTableView.swift */; };
 		71D8F3DA271343B00084DDE7 /* RecentSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F3D9271343B00084DDE7 /* RecentSearchTableViewCell.swift */; };
+		71D8F3DC271351B50084DDE7 /* ItemHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F3DB271351B50084DDE7 /* ItemHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		71D8F3D527133C570084DDE7 /* RecentSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchView.swift; sourceTree = "<group>"; };
 		71D8F3D7271342660084DDE7 /* RecentSearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableView.swift; sourceTree = "<group>"; };
 		71D8F3D9271343B00084DDE7 /* RecentSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableViewCell.swift; sourceTree = "<group>"; };
+		71D8F3DB271351B50084DDE7 /* ItemHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				71CCCA8F2710F77F009885D2 /* ItemViewController.swift */,
+				71D8F3DB271351B50084DDE7 /* ItemHeaderView.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				71CCCA902710F77F009885D2 /* ItemViewController.swift in Sources */,
 				71D310142711EFEA002689FE /* SearchResultsView.swift in Sources */,
 				71D3100F2711E694002689FE /* Logger.swift in Sources */,
+				71D8F3DC271351B50084DDE7 /* ItemHeaderView.swift in Sources */,
 				71D81B2727120453007CE54D /* SearchHeaderView.swift in Sources */,
 				71D8F3DA271343B00084DDE7 /* RecentSearchTableViewCell.swift in Sources */,
 				71D81B3127123D8A007CE54D /* UIImageView.swift in Sources */,

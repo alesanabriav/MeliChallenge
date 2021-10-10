@@ -22,7 +22,32 @@ class SearchResultsView : UIView {
 
 		_viewModel.searchResponse.observe { [weak self] res in
 
+			self?._viewModel.getFavorites()
+
+			let favs = self?._viewModel.favorites
+
+			self?.resultsCollection.favorites = favs
+
 			self?.resultsCollection.results = res.results
+		}
+
+		resultsCollection.onResultFavorite = { [weak self] result, isFavorite in
+
+			if isFavorite {
+
+				self?._viewModel.storeFavorite(result)
+
+			} else {
+
+				self?._viewModel.removeFavorite(by: result.id)
+			}
+
+
+		}
+
+		resultsCollection.onResultSelected = { [weak self] result in
+
+			self?._viewModel.resultSelected.value = result
 		}
 	}
 

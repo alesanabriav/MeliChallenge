@@ -9,6 +9,12 @@ import UIKit
 
 class SearchResultsCollectionView: UICollectionView {
 
+	var onResultSelected: ((SearchResult) -> Void)?
+
+	var onResultFavorite: ((SearchResult, Bool) -> Void)?
+
+	var favorites: [SearchResult]?
+
 	var results: [SearchResult]? {
 
 		didSet {
@@ -45,6 +51,19 @@ class SearchResultsCollectionView: UICollectionView {
 		}
 	}
 
+	private func handleFavorite(_ result: SearchResult, isFavorite: Bool) {
+
+		if isFavorite {
+
+			favorites?.append(result)
+
+		} else {
+
+			favorites?.removeAll(where: { $0.id == result.id })
+		}
+
+		onResultFavorite?(result, isFavorite)
+	}
 
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
@@ -69,7 +88,18 @@ extension SearchResultsCollectionView : UICollectionViewDataSource {
 
 		if let resultCell = cell as? SearchResultsCollectionViewCell, let result = results?[indexPath.row] {
 
+			let isFav = favorites?.contains(result) ?? false
+
+			resultCell.isFavorite = isFav
+
 			resultCell.setCell(result)
+
+			resultCell.onFavorite = { [weak self] isFavorite in
+
+				Logger.log(.message, msg: "\(result)")
+
+				self?.handleFavorite(result, isFavorite: isFavorite)
+			}
 			
 		}
 
@@ -85,8 +115,8 @@ extension SearchResultsCollectionView : UICollectionViewDelegate {
 
 		if let result = results?[indexPath.row] {
 
+			onResultSelected?(result)
 		}
-
 	}
 }
 

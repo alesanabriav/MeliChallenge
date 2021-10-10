@@ -68,4 +68,27 @@ class CacheTests: XCTestCase {
 		XCTAssertEqual(keys, keysExpected)
 	}
 
+
+	func testShouldRemoveObject() throws {
+
+		let cache = Cache.shared
+
+		let text = "Hi Meli"
+
+		let key = "meli_greeting"
+
+		cache.store(text, forKey: key)
+
+		let textStored = cache.get(forKey: key)
+
+		XCTAssertEqual(text, textStored)
+
+		cache.remove(forKey: key)
+
+		let textDelete = cache.get(forKey: key)
+
+		XCTAssertNil(textDelete)
+	}
+
+
 }

@@ -64,4 +64,18 @@ class SearchRepositoryTests: XCTestCase {
 		XCTAssertEqual(queries.first, query)
 	}
 
+
+	func testShouldStoreFavorite() throws {
+
+		let repo = SearchRepository()
+
+		let result = SearchResult(id: "MCO7", site_id: "MCO", title: "iPhone 13", seller: nil, price: 4700000, currency_id: "COP", thumbnail: "", accepts_mercadopago: true, installments: nil, shipping: nil, available_quantity: 5, buying_mode: "", condition: "new")
+
+		repo.storeFavorite(result: result)
+
+		let results = repo.getFavorites()
+
+		XCTAssertEqual(results.first, result)
+	}
+
 }

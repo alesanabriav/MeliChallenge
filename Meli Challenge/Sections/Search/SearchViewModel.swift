@@ -21,6 +21,8 @@ class SearchViewModel {
 
 	var searchQuery = Observable<String>("")
 
+	var favorites: [SearchResult] = []
+
 	func searchBy(query: String) {
 
 		searchRepo.searchBy(query: query, limit: 50) { [weak self] result in
@@ -50,4 +52,22 @@ class SearchViewModel {
 
 		recentQueries.value = queries
 	}
+
+	func storeFavorite(_ result: SearchResult) {
+
+		searchRepo.storeFavorite(result: result)
+	}
+
+	func removeFavorite(by id: String) {
+		
+		searchRepo.removeFavorite(by: id)
+	}
+
+	func getFavorites() {
+
+		let favs = searchRepo.getFavorites()
+
+		favorites = favs
+	}
+
 }

@@ -35,6 +35,24 @@ class SearchViewController : UIViewController {
 		return recentView
 	}()
 
+	private lazy var activityIndicator: UIActivityIndicatorView = {
+
+		let indicatorView = UIActivityIndicatorView()
+
+		indicatorView.translatesAutoresizingMaskIntoConstraints = false
+
+		indicatorView.style = .large
+
+		indicatorView.color = .mlBlue
+
+		indicatorView.hidesWhenStopped = true
+
+		indicatorView.accessibilityIdentifier = "SearchViewController_activityIndicator"
+
+		return indicatorView
+	}()
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,6 +74,12 @@ class SearchViewController : UIViewController {
 
 			self?.handleQuery(query)
 		}
+
+		viewModel.resultSelected.observe { [weak self] result in
+
+			self?.openItemDetail(result)
+		}
+
     }
 
 	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -73,6 +97,8 @@ class SearchViewController : UIViewController {
 
 		view.addSubview(headerView)
 
+		view.addSubview(activityIndicator)
+
 		view.addSubview(resultsView)
 
 		view.addSubview(recentView)
@@ -82,6 +108,9 @@ class SearchViewController : UIViewController {
 			headerView.leftAnchor.constraint(equalTo: view.leftAnchor),
 			headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
 			headerView.heightAnchor.constraint(equalToConstant: 120),
+
+			activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 60),
+			activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
 			resultsView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
 			resultsView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -95,9 +124,13 @@ class SearchViewController : UIViewController {
 		])
 	}
 
+	// MARK: actions
+
 	private func showResults(_ show: Bool = true) {
 
 		DispatchQueue.main.async {
+
+			self.activityIndicator.stopAnimating()
 
 			self.resultsView.isHidden = !show
 
@@ -133,11 +166,20 @@ class SearchViewController : UIViewController {
 				return
 			}
 
+			self.activityIndicator.startAnimating()
+
 			self.headerView.setQuery(query)
 
 			self.viewModel.searchBy(query: query)
 		}
 
+	}
+
+	private func openItemDetail(_ item: SearchResult) {
+
+		let itemVC = ItemViewController()
+
+		navigationController?.pushViewController(itemVC, animated: true)
 	}
 
 }
@@ -159,6 +201,8 @@ extension SearchViewController : SearchHeaderViewDelegate {
 	func searchEnd(_ query: String) {
 
 		Logger.log(.message, msg: "search end: \(query)")
+
+		activityIndicator.startAnimating()
 
 		viewModel.storeRecentQuery(query)
 

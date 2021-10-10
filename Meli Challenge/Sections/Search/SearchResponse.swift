@@ -25,13 +25,13 @@ struct SearchResult : Codable {
 	var id: String
 	var site_id: String
 	var title: String
-	var seller: Seller
+	var seller: Seller?
 	var price: Int
 	var currency_id: String
 	var thumbnail: String
 	var accepts_mercadopago: Bool
-	var installments: Installments
-	var shipping: Shipping
+	var installments: Installments?
+	var shipping: Shipping?
 	var available_quantity: Int
 	var buying_mode: String
 	var condition: String
@@ -52,4 +52,16 @@ struct SearchResult : Codable {
 	struct Seller : Codable {
 		var id: Int
 	}
+}
+
+extension SearchResult : Equatable {
+
+	static func == (lhs: SearchResult, rhs: SearchResult) -> Bool {
+
+		return lhs.id == rhs.id &&
+			lhs.title == rhs.title &&
+			lhs.price == rhs.price &&
+			lhs.available_quantity == rhs.available_quantity
+	}
+
 }

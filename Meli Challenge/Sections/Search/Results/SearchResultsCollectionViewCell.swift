@@ -11,7 +11,15 @@ class SearchResultsCollectionViewCell : UICollectionViewCell {
 
 	static let reuseId = "SearchResultsCollectionViewCell"
 
-	var onFavorite: ((IndexPath) -> Void)?
+	var onFavorite: ((Bool) -> Void)?
+
+	var isFavorite = false {
+
+		didSet {
+
+			setFavoriteBtn(animate: true)
+		}
+	}
 
 	private lazy var thumbImg: UIImageView = {
 
@@ -165,15 +173,9 @@ class SearchResultsCollectionViewCell : UICollectionViewCell {
 
 	@objc func favoriteTap() {
 
-		guard let collection = superview as? UICollectionView else {
-			return
-		}
+		isFavorite = !isFavorite
 
-		guard let indexPath = collection.indexPath(for: self) else {
-			return
-		}
-
-		onFavorite?(indexPath)
+		onFavorite?(isFavorite)
 	}
 
 	// MARK: layout
@@ -225,7 +227,11 @@ class SearchResultsCollectionViewCell : UICollectionViewCell {
 		titleText.text = ""
 
 		thumbImg.image = nil
+
+		isFavorite = false
 	}
+
+	// MARK: Actions
 
 	func setCell(_ result: SearchResult) {
 
@@ -235,11 +241,26 @@ class SearchResultsCollectionViewCell : UICollectionViewCell {
 
 		priceLabel.text = price
 
-		let amount = NumberFormatter.currency.string(from: result.installments.amount as NSNumber) ?? ""
+		setInstallments(result)
 
-		installmentsLabel.text = "en \(result.installments.quantity)x \(amount)"
+		setShipping(result)
 
-		if result.shipping.free_shipping {
+		thumbImg.setImage(with: result.thumbnail)
+	}
+
+	private func setInstallments(_ result: SearchResult) {
+
+		if let installments = result.installments {
+
+			let amount = NumberFormatter.currency.string(from: installments.amount as NSNumber) ?? ""
+
+			installmentsLabel.text = "en \(installments.quantity)x \(amount)"
+		}
+	}
+
+	private func setShipping(_ result: SearchResult) {
+
+		if let shipping = result.shipping, shipping.free_shipping {
 
 			shippingLabel.text = "Envío gratis"
 
@@ -247,7 +268,34 @@ class SearchResultsCollectionViewCell : UICollectionViewCell {
 
 			shippingLabel.isHidden = true
 		}
+	}
 
-		thumbImg.setImage(with: result.thumbnail)
+	private func setFavoriteBtn(animate: Bool = false) {
+
+		let img = UIImage(systemName: "heart")
+
+		let imgFill = UIImage(systemName: "heart.fill")
+
+		if animate {
+
+			UIView.animate(withDuration: 0.3) {
+
+				self.favoriteBtn.setImage(self.isFavorite ? imgFill : img, for: .normal)
+
+				self.favoriteBtn.layer.transform = CATransform3DMakeScale(1.1, 1.1 , 1.0)
+
+			} completion: { completed in
+
+				self.favoriteBtn.layer.transform = CATransform3DMakeScale(1.0, 1.0, 1.0)
+			}
+
+		} else {
+
+			self.favoriteBtn.setImage(self.isFavorite ? imgFill : img, for: .normal)
+		}
+
+
+
+
 	}
 }
