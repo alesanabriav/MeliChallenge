@@ -15,6 +15,8 @@ class SearchViewModel {
 
 	var searchResError = Observable<Error>()
 
+	var resultSelected = Observable<SearchResult>()
+
 	func searchBy(query: String) {
 
 		searchRepo.searchBy(query: query, limit: 50) { [weak self] result in
