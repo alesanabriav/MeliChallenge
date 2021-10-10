@@ -11,6 +11,8 @@ protocol SearchHeaderViewDelegate : AnyObject {
 
 	func searchFocus()
 
+	func searchCancel()
+
 	func searchEnd(_ query: String)
 
 	func searchChange(_ query: String)

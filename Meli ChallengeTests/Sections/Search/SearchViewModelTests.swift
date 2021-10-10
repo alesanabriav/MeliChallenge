@@ -46,5 +46,27 @@ class SearchViewModelTests: XCTestCase {
 
     }
 
+	func testShouldStoreRecentQuery() throws {
+
+		let exp = expectation(description: "get recent queries")
+
+		let vm = SearchViewModel()
+
+		let query = "ipad"
+
+		vm.storeRecentQuery(query)
+
+		vm.recentQueries.observe { queries in
+
+			XCTAssertEqual(queries.first, query)
+
+			exp.fulfill()
+		}
+
+		vm.getRecentQueries()
+
+		waitForExpectations(timeout: 3, handler: nil)
+	}
+
 
 }

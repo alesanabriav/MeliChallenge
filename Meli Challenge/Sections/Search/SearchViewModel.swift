@@ -17,6 +17,8 @@ class SearchViewModel {
 
 	var resultSelected = Observable<SearchResult>()
 
+	var recentQueries = Observable<[String]>([])
+
 	func searchBy(query: String) {
 
 		searchRepo.searchBy(query: query, limit: 50) { [weak self] result in
@@ -33,5 +35,17 @@ class SearchViewModel {
 			}
 
 		}
+	}
+
+	func storeRecentQuery(_ query: String) {
+
+		searchRepo.storeRecentQuery(query)
+	}
+
+	func getRecentQueries() {
+
+		let queries = searchRepo.getRecentQueries()
+
+		recentQueries.value = queries
 	}
 }

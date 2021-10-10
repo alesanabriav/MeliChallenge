@@ -24,6 +24,17 @@ class SearchViewController : UIViewController {
 		return resultsView
 	}()
 
+	private lazy var recentView: RecentSearchView = {
+
+		let recentView = RecentSearchView(frame: .zero, viewModel: viewModel)
+
+		recentView.isHidden = true
+
+		recentView.layer.opacity = 0
+
+		return recentView
+	}()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +59,8 @@ class SearchViewController : UIViewController {
 		resultsView.relayout()
 	}
 
+	// MARK: Layout
+
 	private func setLayout() {
 
 		view.backgroundColor = .white
@@ -55,6 +68,8 @@ class SearchViewController : UIViewController {
 		view.addSubview(headerView)
 
 		view.addSubview(resultsView)
+
+		view.addSubview(recentView)
 
 		NSLayoutConstraint.activate([
 			headerView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -65,11 +80,16 @@ class SearchViewController : UIViewController {
 			resultsView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
 			resultsView.leftAnchor.constraint(equalTo: view.leftAnchor),
 			resultsView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-			resultsView.rightAnchor.constraint(equalTo: view.rightAnchor)
+			resultsView.rightAnchor.constraint(equalTo: view.rightAnchor),
+
+			recentView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+			recentView.leftAnchor.constraint(equalTo: view.leftAnchor),
+			recentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			recentView.rightAnchor.constraint(equalTo: view.rightAnchor)
 		])
 	}
 
-	func showResults(_ show: Bool = true) {
+	private func showResults(_ show: Bool = true) {
 
 		DispatchQueue.main.async {
 
@@ -81,6 +101,19 @@ class SearchViewController : UIViewController {
 		}
 	}
 
+	private func showRecent(_ show: Bool = true) {
+
+		viewModel.getRecentQueries()
+
+		DispatchQueue.main.async {
+
+			self.recentView.isHidden = !show
+
+			self.recentView.layer.opacity = show ? 1 : 0
+
+			self.view.layoutIfNeeded()
+		}
+	}
 
 }
 
@@ -88,17 +121,28 @@ extension SearchViewController : SearchHeaderViewDelegate {
 
 	func searchFocus() {
 
+		showRecent()
+	}
+
+	func searchCancel() {
+
+		showRecent(false)
+
+		showResults(false)
 	}
 
 	func searchEnd(_ query: String) {
 
 		Logger.log(.message, msg: "search end: \(query)")
 
+		viewModel.storeRecentQuery(query)
+
 		viewModel.searchBy(query: query)
 	}
 
 	func searchChange(_ query: String) {
-
+		
+		showRecent(false)
 	}
 
 

@@ -51,4 +51,17 @@ class SearchRepositoryTests: XCTestCase {
 		waitForExpectations(timeout: 3, handler: nil)
     }
 
+	func testShouldStoreRecentQuery() throws {
+
+		let repo = SearchRepository()
+
+		let query = "iphone"
+
+		repo.storeRecentQuery(query)
+
+		let queries = repo.getRecentQueries()
+
+		XCTAssertEqual(queries.first, query)
+	}
+
 }

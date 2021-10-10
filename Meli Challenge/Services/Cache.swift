@@ -21,6 +21,11 @@ class Cache {
 		case emptyData
 	}
 
+	enum Key : String {
+		case recentQuery
+		case favoriteItem
+	}
+
 	func store(_ string: String, forKey: String) {
 
 		userDefaults.setValue(string, forKey: forKey)

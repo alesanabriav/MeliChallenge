@@ -142,6 +142,8 @@ class SearchHeaderView : UIView {
 		searchTextField.text = ""
 
 		searchTextField.resignFirstResponder()
+
+		delegate?.searchCancel()
 	}
 
 	private func showCancel(_ show: Bool = true) {
