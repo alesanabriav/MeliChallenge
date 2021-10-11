@@ -9,18 +9,29 @@ import UIKit
 
 class ItemViewController: UIViewController {
 
-	var viewModel: SearchViewModel?
+	let viewModel = ItemViewModel()
 
 	// MARK: Components
 
 	lazy var headerView = ItemHeaderView()
 
+	lazy var InfoView = ItemInfoView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+		Logger.log("viewDidLoad 1")
 
         setLayout()
 
 		setCallbacks()
+
+		viewModel.seller.observe { [weak self] seller in
+
+			Logger.log("seller observer \(seller.nickname)")
+
+			self?.InfoView.setSeller(nickname: seller.nickname)
+		}
 
 		setItem()
     }
@@ -33,11 +44,18 @@ class ItemViewController: UIViewController {
 
 		view.addSubview(headerView)
 
+		view.addSubview(InfoView)
+
 		NSLayoutConstraint.activate([
 			headerView.topAnchor.constraint(equalTo: view.topAnchor),
 			headerView.leftAnchor.constraint(equalTo: view.leftAnchor),
 			headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
-			headerView.heightAnchor.constraint(equalToConstant: 120)
+			headerView.heightAnchor.constraint(equalToConstant: 120),
+
+			InfoView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+			InfoView.leftAnchor.constraint(equalTo: view.leftAnchor),
+			InfoView.rightAnchor.constraint(equalTo: view.rightAnchor),
+			InfoView.heightAnchor.constraint(equalToConstant: 160)
 		])
 
 	}
@@ -65,19 +83,24 @@ class ItemViewController: UIViewController {
 
 	private func setItem() {
 
-		Logger.log("set item \(viewModel?.resultSelected.value?.id)")
-
-		guard let result = viewModel?.resultSelected.value else {
+		guard let result = viewModel.currentItem.value else {
 			return
 		}
 
-		viewModel?.getFavoriteId(by: result.id)
+		viewModel.getFavoriteId(by: result.id)
 
-		let isFavorite = viewModel?.favoriteId != nil
-
-		Logger.log("\(isFavorite) \(viewModel?.favoriteId)")
+		let isFavorite = viewModel.favoriteId != nil
 
 		headerView.isFavorite = isFavorite
+
+		if let id = result.seller?.id {
+
+			Logger.log("viewDidLoad 2")
+
+			viewModel.getSeller(by: id)
+		}
+
+		InfoView.setInfo(result)
 	}
 
 	private func openSearch() {

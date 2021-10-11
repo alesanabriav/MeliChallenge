@@ -25,8 +25,6 @@ class SearchViewModel {
 
 	var favoritesIds: [String] = []
 
-	var favoriteId: String?
-
 	func searchBy(query: String) {
 
 		searchRepo.searchBy(query: query, limit: 50) { [weak self] result in
@@ -67,18 +65,6 @@ class SearchViewModel {
 		favoritesRepo.removeFavorite(by: id)
 	}
 
-	func getFavoriteId(by id: String) {
-
-		guard let fav = favoritesRepo.getFavorite(by: id) else {
-
-			favoriteId = nil
-
-			return
-		}
-
-		favoriteId = fav.id
-	}
-
 	func getFavoritesIds() {
 
 		let ids = favoritesRepo.getFavoritesIds()
@@ -86,4 +72,7 @@ class SearchViewModel {
 		favoritesIds = ids
 	}
 
+	deinit {
+		Logger.log("deinit SearchViewModel")
+	}
 }

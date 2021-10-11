@@ -9,9 +9,13 @@ import UIKit
 
 class SearchViewController : UIViewController {
 
-	var isFullscreen = false
+	var onDeinit: (() -> Void)?
 
 	private let viewModel = SearchViewModel()
+
+	var isFullscreen = false
+
+	// MARK: Components
 
 	private lazy var headerView = SearchHeaderView()
 
@@ -54,6 +58,7 @@ class SearchViewController : UIViewController {
 		return indicatorView
 	}()
 
+	// MARK: Lifecycles
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,7 +118,7 @@ class SearchViewController : UIViewController {
 		])
 	}
 
-	// MARK: actions
+	// MARK: Actions
 
 	private func setCallbacks() {
 
@@ -140,7 +145,11 @@ class SearchViewController : UIViewController {
 
 	private func showResults(_ show: Bool = true) {
 
-		DispatchQueue.main.async {
+		DispatchQueue.main.async { [weak self] in
+
+			guard let self = self else {
+				return
+			}
 
 			self.activityIndicator.stopAnimating()
 
@@ -191,7 +200,7 @@ class SearchViewController : UIViewController {
 
 		let itemVC = ItemViewController()
 
-		itemVC.viewModel = viewModel
+		itemVC.viewModel.currentItem.value = viewModel.resultSelected.value
 
 		navigationController?.pushViewController(itemVC, animated: true)
 	}
@@ -201,8 +210,16 @@ class SearchViewController : UIViewController {
 		navigationController?.popViewController(animated: true)
 	}
 
+	deinit {
+
+		onDeinit?()
+
+		Logger.log("Deinit SearchViewController")
+	}
+
 }
 
+// MARK: SearchHeaderViewDelegate
 extension SearchViewController : SearchHeaderViewDelegate {
 
 	func searchFocus() {

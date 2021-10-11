@@ -15,7 +15,9 @@ class SearchRepository {
 
 	func searchBy(query: String, limit: Int = 1, completion: @escaping (Result<SearchResponse, Error>) -> Void) {
 
-		network.get(SearchResponse.self, from: "/search?q=\(query)&limit=\(limit)") { result in
+		let path = "/sites/\(Network.Site.COL.rawValue)/search?q=\(query)&limit=\(limit)"
+
+		network.get(SearchResponse.self, from: path) { result in
 
 			switch result {
 

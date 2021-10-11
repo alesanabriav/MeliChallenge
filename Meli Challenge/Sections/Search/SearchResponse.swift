@@ -33,6 +33,7 @@ struct SearchResult : Codable {
 	var installments: Installments?
 	var shipping: Shipping?
 	var available_quantity: Int
+	var sold_quantity: Int
 	var buying_mode: String
 	var condition: String
 

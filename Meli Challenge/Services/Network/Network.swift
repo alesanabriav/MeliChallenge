@@ -15,7 +15,7 @@ class Network {
 
 	private lazy var decoder = JSONDecoder()
 
-	private let baseUri = "https://api.mercadolibre.com/sites/"
+	private let baseUri = "https://api.mercadolibre.com"
 
 	enum Site : String {
 		case COL = "MCO"
@@ -38,7 +38,9 @@ class Network {
 
 	public func get<T: Codable>(_ type: T.Type, from path: String, completion: @escaping (Result<T, Error>) -> Void) {
 
-		let uri = "\(baseUri)\(siteId)\(path)"
+		let uri = "\(baseUri)\(path)"
+
+		Logger.log(uri)
 
 		guard let url = URL(string: uri) else {
 

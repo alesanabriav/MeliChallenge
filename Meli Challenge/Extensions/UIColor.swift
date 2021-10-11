@@ -34,6 +34,11 @@ extension UIColor {
 		return UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 1.00)
 	}
 
+	open class var mlNero: UIColor {
+
+		return UIColor(red: 0.93, green: 0.93, blue: 0.94, alpha: 1.00)
+	}
+
 	open class var mlBlue: UIColor {
 
 		return UIColor(red: 0.00, green: 0.52, blue: 0.96, alpha: 1.00)

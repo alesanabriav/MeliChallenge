@@ -70,6 +70,7 @@ extension UIImageView {
 							self.image = resizedImg
 
 							UIView.animate(withDuration: 0.3) {
+
 								self.layer.opacity = 1
 							}
 						}
@@ -81,7 +82,7 @@ extension UIImageView {
 		}
 	}
 
-	open func setImage(with uri: String?) {
+	open func setImage(with uri: String?, completion: ((CGSize) -> Void)? = nil) {
 
 		if let uri = uri {
 
@@ -100,6 +101,8 @@ extension UIImageView {
 					}) { _ in
 
 						self.image = img
+
+						completion?(img.size)
 
 						UIView.animate(withDuration: 0.3) {
 
