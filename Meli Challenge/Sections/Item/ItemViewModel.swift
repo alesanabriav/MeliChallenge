@@ -23,6 +23,8 @@ class ItemViewModel {
 
 	var description = Observable<String>("")
 
+	var questions = Observable<[ItemQuestion]>()
+
 	func getSeller(by id: Int) {
 
 		itemRepo.getSeller(by: id) { [weak self] res in
@@ -47,12 +49,12 @@ class ItemViewModel {
 
 	func getDescription(by id: String) {
 
-		itemRepo.getDescription(by: id) { res in
+		itemRepo.getDescription(by: id) { [weak self] res in
 
 			switch res {
 			case .success(let description):
 
-				self.description.value = description
+				self?.description.value = description
 
 			case .failure(let err):
 
@@ -61,6 +63,24 @@ class ItemViewModel {
 			
 		}
 	}
+
+	func getQuestions(by id: String) {
+
+		itemRepo.getQuestions(by: id) { [weak self] res in
+
+			switch res {
+			case .success(let questions):
+
+				self?.questions.value = questions
+
+			case .failure(let err):
+
+				Logger.error(err, extraInfo: "get questions in viewModel")
+			}
+
+		}
+	}
+	
 
 	func getFavoriteId(by id: String) {
 

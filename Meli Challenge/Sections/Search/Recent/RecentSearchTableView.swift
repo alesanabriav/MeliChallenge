@@ -53,6 +53,7 @@ class RecentSearchTableView : UITableView {
 }
 
 extension RecentSearchTableView : UITableViewDataSource {
+	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
 		return queries?.count ?? 0

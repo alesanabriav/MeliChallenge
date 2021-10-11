@@ -47,7 +47,24 @@ class ItemRepository {
 			}
 
 		}
-		
+	}
+
+	func getQuestions(by id: String, completion: @escaping (Result<[ItemQuestion], Error>) -> Void) {
+
+		let path = "/questions/search?item=\(id)"
+
+		network.get(ItemQuestions.self, from: path) { res in
+
+			switch res {
+			case .success(let questionsRes):
+
+				completion(.success(questionsRes.questions))
+
+			case .failure(let err):
+
+				completion(.failure(err))
+			}
+		}
 
 	}
 }

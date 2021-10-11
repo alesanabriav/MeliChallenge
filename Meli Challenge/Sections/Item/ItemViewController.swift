@@ -62,10 +62,17 @@ class ItemViewController: UIViewController {
 
 	private lazy var descriptionViewHeightAnchor = descriptionView.heightAnchor.constraint(equalToConstant: 0)
 
+	private lazy var questionsViewHeightAnchor = questionsView.heightAnchor.constraint(equalToConstant: 0)
+
+	private lazy var questionsView: ItemQuestionsView = {
+
+		let questionsView = ItemQuestionsView(frame: .zero, viewModel: viewModel)
+
+		return questionsView
+	}()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-		Logger.log("viewDidLoad 1")
 
         setLayout()
 
@@ -104,6 +111,8 @@ class ItemViewController: UIViewController {
 
 		containerStackView.addArrangedSubview(descriptionView)
 
+		containerStackView.addArrangedSubview(questionsView)
+
 		NSLayoutConstraint.activate([
 			headerView.topAnchor.constraint(equalTo: view.topAnchor),
 			headerView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -135,7 +144,11 @@ class ItemViewController: UIViewController {
 
 			descriptionView.leftAnchor.constraint(equalTo: view.leftAnchor),
 			descriptionView.rightAnchor.constraint(equalTo: view.rightAnchor),
-			descriptionViewHeightAnchor
+			descriptionViewHeightAnchor,
+
+			questionsView.leftAnchor.constraint(equalTo: view.leftAnchor),
+			questionsView.rightAnchor.constraint(equalTo: view.rightAnchor),
+			questionsViewHeightAnchor
 		])
 
 	}
@@ -147,7 +160,6 @@ class ItemViewController: UIViewController {
 		headerView.onBack = { [weak self] in
 
 			self?.handleBack()
-
 		}
 
 		headerView.onSearch = { [weak self] in
@@ -164,11 +176,16 @@ class ItemViewController: UIViewController {
 
 			self?.descriptionViewHeightAnchor.constant = height + 100
 		}
+
+		questionsView.onTotalHeight = { [weak self] height in
+
+			self?.questionsViewHeightAnchor.constant = height
+
+			self?.containerStackView.layoutIfNeeded()
+		}
 	}
 
 	private func handleSeller(_ seller: ItemSeller) {
-
-		Logger.log("seller observer \(seller)")
 
 		DispatchQueue.main.async { [weak self] in
 
@@ -192,17 +209,19 @@ class ItemViewController: UIViewController {
 			return
 		}
 
-		viewModel.getFavoriteId(by: result.id)
+		let id = result.id
 
-		viewModel.getDescription(by: result.id)
+		viewModel.getFavoriteId(by: id)
+
+		viewModel.getDescription(by: id)
+
+		viewModel.getQuestions(by: id)
 
 		let isFavorite = viewModel.favoriteId != nil
 
 		headerView.isFavorite = isFavorite
 
 		if let id = result.seller?.id {
-
-			Logger.log("viewDidLoad 2")
 
 			viewModel.getSeller(by: id)
 		}
