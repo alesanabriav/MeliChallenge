@@ -65,7 +65,7 @@ class CacheTests: XCTestCase {
 
 		let keys = cache.keys(by: key)
 
-		XCTAssertEqual(keys, keysExpected)
+		XCTAssertEqual(keys.count, keysExpected.count)
 	}
 
 

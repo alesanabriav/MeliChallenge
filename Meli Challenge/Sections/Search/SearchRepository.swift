@@ -57,35 +57,13 @@ class SearchRepository {
 		return values
 	}
 
-	func storeFavorite(result: SearchResult) {
+	func cleanRecentQueries() {
 
-		let key = "\(Cache.Key.favoriteItem)_\(result.id)"
-
-		cache.store(result, forKey: key)
-	}
-
-	func removeFavorite(by id: String) {
-
-		let key = "\(Cache.Key.favoriteItem)_\(id)"
-
-		cache.remove(forKey: key)
-	}
-
-	func getFavorites() -> [SearchResult] {
-
-		let keys = cache.keys(by: Cache.Key.favoriteItem.rawValue)
-
-		var values: [SearchResult] = []
+		let keys = cache.keys(by: Cache.Key.recentQuery.rawValue)
 
 		for key in keys {
 
-			guard let result = cache.get(SearchResult.self, forKey: key) else {
-				continue
-			}
-
-			values.append(result)
+			cache.remove(forKey: key)
 		}
-
-		return values
 	}
 }

@@ -22,11 +22,11 @@ class SearchResultsView : UIView {
 
 		_viewModel.searchResponse.observe { [weak self] res in
 
-			self?._viewModel.getFavorites()
+			self?._viewModel.getFavoritesIds()
 
-			let favs = self?._viewModel.favorites
+			let ids = self?._viewModel.favoritesIds
 
-			self?.resultsCollection.favorites = favs
+			self?.resultsCollection.favoritesIds = ids
 
 			self?.resultsCollection.results = res.results
 		}

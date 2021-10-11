@@ -47,6 +47,8 @@
 		71D8F3D8271342660084DDE7 /* RecentSearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F3D7271342660084DDE7 /* RecentSearchTableView.swift */; };
 		71D8F3DA271343B00084DDE7 /* RecentSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F3D9271343B00084DDE7 /* RecentSearchTableViewCell.swift */; };
 		71D8F3DC271351B50084DDE7 /* ItemHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F3DB271351B50084DDE7 /* ItemHeaderView.swift */; };
+		71D8F3DF2713C73A0084DDE7 /* FavoritesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F3DE2713C73A0084DDE7 /* FavoritesRepository.swift */; };
+		71D8F3E22713C7C50084DDE7 /* FavoritesRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F3E12713C7C50084DDE7 /* FavoritesRepositoryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,8 @@
 		71D8F3D7271342660084DDE7 /* RecentSearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableView.swift; sourceTree = "<group>"; };
 		71D8F3D9271343B00084DDE7 /* RecentSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableViewCell.swift; sourceTree = "<group>"; };
 		71D8F3DB271351B50084DDE7 /* ItemHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHeaderView.swift; sourceTree = "<group>"; };
+		71D8F3DE2713C73A0084DDE7 /* FavoritesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRepository.swift; sourceTree = "<group>"; };
+		71D8F3E12713C7C50084DDE7 /* FavoritesRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRepositoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,10 +205,10 @@
 				71D310122711EFD1002689FE /* Results */,
 				71CCCA8C2710F733009885D2 /* Recent */,
 				71CCCA8D2710F75D009885D2 /* SearchViewController.swift */,
+				71D81B2627120453007CE54D /* SearchHeaderView.swift */,
 				71D3100C2711E2AA002689FE /* SearchResponse.swift */,
 				71D310172711F0BF002689FE /* SearchRepository.swift */,
 				71D310192711F0CF002689FE /* SearchViewModel.swift */,
-				71D81B2627120453007CE54D /* SearchHeaderView.swift */,
 				71D81B2A2712158C007CE54D /* SearchHeaderViewDelegate.swift */,
 			);
 			path = Search;
@@ -243,6 +247,7 @@
 		71CCCA952710F8B8009885D2 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				71D8F3DD2713C7250084DDE7 /* Favorites */,
 				71CCCA962710F8CC009885D2 /* Main */,
 				71CCCA8B2710F6F4009885D2 /* Item */,
 				71CCCA8A2710F6E7009885D2 /* Search */,
@@ -300,6 +305,7 @@
 		71D3101B2711F262002689FE /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				71D8F3E02713C7B00084DDE7 /* Favorites */,
 				71D3101C2711F268002689FE /* Search */,
 			);
 			path = Sections;
@@ -346,6 +352,22 @@
 				71D81B222711FC01007CE54D /* ObservableTests.swift */,
 			);
 			path = Libs;
+			sourceTree = "<group>";
+		};
+		71D8F3DD2713C7250084DDE7 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				71D8F3DE2713C73A0084DDE7 /* FavoritesRepository.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		71D8F3E02713C7B00084DDE7 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				71D8F3E12713C7C50084DDE7 /* FavoritesRepositoryTests.swift */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -485,6 +507,7 @@
 				71D81B202711FB85007CE54D /* Observable.swift in Sources */,
 				71D81B2F27123934007CE54D /* SearchResultsCollectionViewCell.swift in Sources */,
 				71CCCA5F2710F344009885D2 /* MainViewController.swift in Sources */,
+				71D8F3DF2713C73A0084DDE7 /* FavoritesRepository.swift in Sources */,
 				71CCCA942710F7F0009885D2 /* UIColor.swift in Sources */,
 				71D310062711DFFF002689FE /* Network.swift in Sources */,
 				71D81B2D27123787007CE54D /* SearchResultsCollectionView.swift in Sources */,
@@ -519,6 +542,7 @@
 				71D310262711F5BC002689FE /* SearchResponseJSON.swift in Sources */,
 				71D310112711E7A1002689FE /* LoggerTests.swift in Sources */,
 				71D81B232711FC01007CE54D /* ObservableTests.swift in Sources */,
+				71D8F3E22713C7C50084DDE7 /* FavoritesRepositoryTests.swift in Sources */,
 				71D81B252711FDEF007CE54D /* SearchViewModelTests.swift in Sources */,
 				71D3101E2711F282002689FE /* SearchRepositoryTests.swift in Sources */,
 			);

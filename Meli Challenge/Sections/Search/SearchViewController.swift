@@ -9,6 +9,8 @@ import UIKit
 
 class SearchViewController : UIViewController {
 
+	var isFullscreen = false
+
 	private let viewModel = SearchViewModel()
 
 	private lazy var headerView = SearchHeaderView()
@@ -60,24 +62,11 @@ class SearchViewController : UIViewController {
 
 		headerView.delegate = self
 
-		viewModel.searchResponse.observe { [weak self] res in
+		setCallbacks()
 
-			if res.results.count > 0 {
+		if isFullscreen {
 
-				self?.showRecent(false)
-
-				self?.showResults()
-			}
-		}
-
-		viewModel.searchQuery.observe { [weak self] query in
-
-			self?.handleQuery(query)
-		}
-
-		viewModel.resultSelected.observe { [weak self] result in
-
-			self?.openItemDetail(result)
+			headerView.setFocus()
 		}
 
     }
@@ -125,6 +114,29 @@ class SearchViewController : UIViewController {
 	}
 
 	// MARK: actions
+
+	private func setCallbacks() {
+
+		viewModel.searchResponse.observe { [weak self] res in
+
+			if res.results.count > 0 {
+
+				self?.showRecent(false)
+
+				self?.showResults()
+			}
+		}
+
+		viewModel.searchQuery.observe { [weak self] query in
+
+			self?.handleQuery(query)
+		}
+
+		viewModel.resultSelected.observe { [weak self] result in
+
+			self?.openItemDetail()
+		}
+	}
 
 	private func showResults(_ show: Bool = true) {
 
@@ -175,11 +187,18 @@ class SearchViewController : UIViewController {
 
 	}
 
-	private func openItemDetail(_ item: SearchResult) {
+	private func openItemDetail() {
 
 		let itemVC = ItemViewController()
 
+		itemVC.viewModel = viewModel
+
 		navigationController?.pushViewController(itemVC, animated: true)
+	}
+
+	private func close() {
+
+		navigationController?.popViewController(animated: true)
 	}
 
 }
@@ -188,10 +207,22 @@ extension SearchViewController : SearchHeaderViewDelegate {
 
 	func searchFocus() {
 
-		showRecent()
+		Logger.log(.message, msg: "focus")
+
+		if let query = viewModel.searchQuery.value, query.isEmpty {
+
+			showRecent()
+		}
 	}
 
 	func searchCancel() {
+
+		if isFullscreen {
+
+			close()
+		}
+
+		viewModel.searchQuery.value = ""
 
 		showRecent(false)
 
@@ -203,6 +234,8 @@ extension SearchViewController : SearchHeaderViewDelegate {
 		Logger.log(.message, msg: "search end: \(query)")
 
 		activityIndicator.startAnimating()
+
+		viewModel.searchQuery.value = query
 
 		viewModel.storeRecentQuery(query)
 

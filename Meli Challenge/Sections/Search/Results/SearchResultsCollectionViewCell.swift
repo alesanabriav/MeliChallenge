@@ -52,6 +52,8 @@ class SearchResultsCollectionViewCell : UICollectionViewCell {
 
 		stackView.spacing = 8
 
+		stackView.accessibilityIdentifier = "SearchResultsCollectionViewCell_stackView"
+
 		return stackView
 	}()
 
@@ -293,9 +295,5 @@ class SearchResultsCollectionViewCell : UICollectionViewCell {
 
 			self.favoriteBtn.setImage(self.isFavorite ? imgFill : img, for: .normal)
 		}
-
-
-
-
 	}
 }

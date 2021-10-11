@@ -11,6 +11,8 @@ class SearchHeaderView : UIView {
 
 	weak var delegate: SearchHeaderViewDelegate?
 
+	// MARK: Components
+
 	private lazy var cancelBtn: UIButton = {
 
 		let btn = UIButton()
@@ -168,6 +170,11 @@ class SearchHeaderView : UIView {
 
 			searchTextField.text = query
 		}
+	}
+
+	func setFocus() {
+
+		searchTextField.becomeFirstResponder()
 	}
 
 	required init?(coder: NSCoder) {

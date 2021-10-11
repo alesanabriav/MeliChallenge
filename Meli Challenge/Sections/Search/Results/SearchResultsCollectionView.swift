@@ -13,7 +13,7 @@ class SearchResultsCollectionView: UICollectionView {
 
 	var onResultFavorite: ((SearchResult, Bool) -> Void)?
 
-	var favorites: [SearchResult]?
+	var favoritesIds: [String]?
 
 	var results: [SearchResult]? {
 
@@ -55,11 +55,11 @@ class SearchResultsCollectionView: UICollectionView {
 
 		if isFavorite {
 
-			favorites?.append(result)
+			favoritesIds?.append(result.id)
 
 		} else {
 
-			favorites?.removeAll(where: { $0.id == result.id })
+			favoritesIds?.removeAll(where: { $0 == result.id })
 		}
 
 		onResultFavorite?(result, isFavorite)
@@ -88,7 +88,11 @@ extension SearchResultsCollectionView : UICollectionViewDataSource {
 
 		if let resultCell = cell as? SearchResultsCollectionViewCell, let result = results?[indexPath.row] {
 
-			let isFav = favorites?.contains(result) ?? false
+			let isFav = favoritesIds?.contains(result.id) ?? false
+
+			print("is fav", result.title, result.id, isFav)
+
+			// MCO608640998
 
 			resultCell.isFavorite = isFav
 

@@ -11,6 +11,8 @@ class SearchViewModel {
 
 	private lazy var searchRepo = SearchRepository()
 
+	private lazy var favoritesRepo = FavoritesRepository()
+
 	var searchResponse = Observable<SearchResponse>()
 
 	var searchResError = Observable<Error>()
@@ -21,7 +23,9 @@ class SearchViewModel {
 
 	var searchQuery = Observable<String>("")
 
-	var favorites: [SearchResult] = []
+	var favoritesIds: [String] = []
+
+	var favoriteId: String?
 
 	func searchBy(query: String) {
 
@@ -55,19 +59,31 @@ class SearchViewModel {
 
 	func storeFavorite(_ result: SearchResult) {
 
-		searchRepo.storeFavorite(result: result)
+		favoritesRepo.storeFavorite(result: result)
 	}
 
 	func removeFavorite(by id: String) {
-		
-		searchRepo.removeFavorite(by: id)
+
+		favoritesRepo.removeFavorite(by: id)
 	}
 
-	func getFavorites() {
+	func getFavoriteId(by id: String) {
 
-		let favs = searchRepo.getFavorites()
+		guard let fav = favoritesRepo.getFavorite(by: id) else {
 
-		favorites = favs
+			favoriteId = nil
+
+			return
+		}
+
+		favoriteId = fav.id
+	}
+
+	func getFavoritesIds() {
+
+		let ids = favoritesRepo.getFavoritesIds()
+
+		favoritesIds = ids
 	}
 
 }

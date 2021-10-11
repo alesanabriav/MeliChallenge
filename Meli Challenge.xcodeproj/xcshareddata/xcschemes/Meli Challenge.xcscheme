@@ -39,6 +39,9 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "FavoritesRepositoryTests">
+               </Test>
+               <Test
                   Identifier = "SearchRepositoryTests/testShouldSearchByQuery()">
                </Test>
             </SkippedTests>
