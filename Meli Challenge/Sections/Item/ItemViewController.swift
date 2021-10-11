@@ -13,9 +13,54 @@ class ItemViewController: UIViewController {
 
 	// MARK: Components
 
-	lazy var headerView = ItemHeaderView()
+	private lazy var containerView: UIView = {
 
-	lazy var InfoView = ItemInfoView()
+		let view  = UIView()
+
+		view.translatesAutoresizingMaskIntoConstraints = false
+
+		view.clipsToBounds = true
+
+		view.accessibilityIdentifier = "ItemViewController_containerView"
+
+		return view
+	}()
+
+	private lazy var scrollView: UIScrollView = {
+
+		let scrollView = UIScrollView()
+
+		scrollView.translatesAutoresizingMaskIntoConstraints = false
+
+		scrollView.accessibilityIdentifier = "ItemViewController_scrollView"
+
+		return scrollView
+	}()
+
+	private lazy var containerStackView: UIStackView =  {
+
+		let stackView = UIStackView()
+
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+
+		stackView.axis = .vertical
+
+		stackView.spacing = 16
+
+		stackView.accessibilityIdentifier = ""
+
+		return stackView
+	}()
+
+	private lazy var headerView = ItemHeaderView()
+
+	private lazy var InfoView = ItemInfoView()
+
+	private lazy var sellerInfoView = ItemSellerInfoView()
+
+	private lazy var descriptionView = ItemDescriptionView()
+
+	private lazy var descriptionViewHeightAnchor = descriptionView.heightAnchor.constraint(equalToConstant: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +73,12 @@ class ItemViewController: UIViewController {
 
 		viewModel.seller.observe { [weak self] seller in
 
-			Logger.log("seller observer \(seller.nickname)")
+			self?.handleSeller(seller)
+		}
 
-			self?.InfoView.setSeller(nickname: seller.nickname)
+		viewModel.description.observe { [weak self] description in
+
+			self?.handleDescription(description)
 		}
 
 		setItem()
@@ -44,7 +92,17 @@ class ItemViewController: UIViewController {
 
 		view.addSubview(headerView)
 
-		view.addSubview(InfoView)
+		view.addSubview(containerView)
+
+		containerView.addSubview(scrollView)
+
+		scrollView.addSubview(containerStackView)
+
+		containerStackView.addArrangedSubview(InfoView)
+
+		containerStackView.addArrangedSubview(sellerInfoView)
+
+		containerStackView.addArrangedSubview(descriptionView)
 
 		NSLayoutConstraint.activate([
 			headerView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -52,10 +110,32 @@ class ItemViewController: UIViewController {
 			headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
 			headerView.heightAnchor.constraint(equalToConstant: 120),
 
-			InfoView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+			containerView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+			containerView.leftAnchor.constraint(equalTo: view.leftAnchor),
+			containerView.rightAnchor.constraint(equalTo: view.rightAnchor),
+			containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+			scrollView.topAnchor.constraint(equalTo: containerView.topAnchor),
+			scrollView.leftAnchor.constraint(equalTo: containerView.leftAnchor),
+			scrollView.rightAnchor.constraint(equalTo: containerView.rightAnchor),
+			scrollView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+
+			containerStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+			containerStackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+			containerStackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
+			containerStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+
 			InfoView.leftAnchor.constraint(equalTo: view.leftAnchor),
 			InfoView.rightAnchor.constraint(equalTo: view.rightAnchor),
-			InfoView.heightAnchor.constraint(equalToConstant: 160)
+			InfoView.heightAnchor.constraint(equalToConstant: 356),
+
+			sellerInfoView.leftAnchor.constraint(equalTo: view.leftAnchor),
+			sellerInfoView.rightAnchor.constraint(equalTo: view.rightAnchor),
+			sellerInfoView.heightAnchor.constraint(equalToConstant: 120),
+
+			descriptionView.leftAnchor.constraint(equalTo: view.leftAnchor),
+			descriptionView.rightAnchor.constraint(equalTo: view.rightAnchor),
+			descriptionViewHeightAnchor
 		])
 
 	}
@@ -79,6 +159,31 @@ class ItemViewController: UIViewController {
 
 			self?.handleFavorite()
 		}
+
+		descriptionView.onTextHeight = { [weak self] height in
+
+			self?.descriptionViewHeightAnchor.constant = height + 100
+		}
+	}
+
+	private func handleSeller(_ seller: ItemSeller) {
+
+		Logger.log("seller observer \(seller)")
+
+		DispatchQueue.main.async { [weak self] in
+
+			guard let self = self else {
+				return
+			}
+
+			guard let info = self.viewModel.currentItem.value else {
+				return
+			}
+
+			self.InfoView.setSeller(seller)
+
+			self.sellerInfoView.setInfo(info, seller: seller)
+		}
 	}
 
 	private func setItem() {
@@ -88,6 +193,8 @@ class ItemViewController: UIViewController {
 		}
 
 		viewModel.getFavoriteId(by: result.id)
+
+		viewModel.getDescription(by: result.id)
 
 		let isFavorite = viewModel.favoriteId != nil
 
@@ -101,6 +208,14 @@ class ItemViewController: UIViewController {
 		}
 
 		InfoView.setInfo(result)
+	}
+
+	private func handleDescription(_ description: String) {
+
+		DispatchQueue.main.async { [weak self] in
+
+			self?.descriptionView.setDescription(description)
+		}
 	}
 
 	private func openSearch() {

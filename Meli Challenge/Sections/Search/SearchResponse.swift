@@ -32,6 +32,7 @@ struct SearchResult : Codable {
 	var accepts_mercadopago: Bool
 	var installments: Installments?
 	var shipping: Shipping?
+	var address: Address?
 	var available_quantity: Int
 	var sold_quantity: Int
 	var buying_mode: String
@@ -41,6 +42,11 @@ struct SearchResult : Codable {
 		var free_shipping: Bool
 		var mode: String
 		var store_pick_up: Bool
+	}
+
+	struct Address : Codable {
+		var state_name: String
+		var city_name: String
 	}
 
 	struct Installments : Codable {

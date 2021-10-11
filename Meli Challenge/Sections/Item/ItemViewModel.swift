@@ -21,7 +21,7 @@ class ItemViewModel {
 
 	var sellerErr = Observable<Error>()
 
-	var description: String = ""
+	var description = Observable<String>("")
 
 	func getSeller(by id: Int) {
 
@@ -43,6 +43,23 @@ class ItemViewModel {
 			}
 		}
 		
+	}
+
+	func getDescription(by id: String) {
+
+		itemRepo.getDescription(by: id) { res in
+
+			switch res {
+			case .success(let description):
+
+				self.description.value = description
+
+			case .failure(let err):
+
+				Logger.error(err, extraInfo: "get description in viewModel")
+			}
+			
+		}
 	}
 
 	func getFavoriteId(by id: String) {

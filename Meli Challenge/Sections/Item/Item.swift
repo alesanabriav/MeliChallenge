@@ -25,11 +25,21 @@ struct ItemSeller : Codable {
 		var level_id: String
 		var power_seller_status: String?
 		var transactions: Transactions?
+		var metrics: Metrics?
 	}
 
 	struct Transactions : Codable {
 		var total: Int
 		var completed: Int
 		var canceled: Int
+	}
+
+	struct Metrics : Codable {
+		var sales: Sales
+	}
+
+	struct Sales : Codable {
+		var period: String
+		var completed: Int
 	}
 }

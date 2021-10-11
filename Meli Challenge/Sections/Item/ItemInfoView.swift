@@ -197,6 +197,34 @@ class ItemInfoView : UIView {
 		return label
 	}()
 
+	private lazy var sellerSalesLabel: UILabel = {
+
+		let label = UILabel()
+
+		label.translatesAutoresizingMaskIntoConstraints = false
+
+		label.font = .placeholder
+
+		label.textColor = .black
+
+		label.backgroundColor = .clear
+
+		label.accessibilityIdentifier = "sellerSalesLabel_installmentsLabel"
+
+		return label
+	}()
+
+	private lazy var separatorView: UIView = {
+
+		let view  = UIView()
+
+		view.translatesAutoresizingMaskIntoConstraints = false
+
+		view.backgroundColor = .mlHaze
+
+		return view
+	}()
+
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
@@ -228,6 +256,10 @@ class ItemInfoView : UIView {
 		addSubview(shippingLabel)
 
 		addSubview(sellerLabel)
+
+		addSubview(sellerSalesLabel)
+
+		addSubview(separatorView)
 
 		NSLayoutConstraint.activate([
 			stateLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
@@ -269,7 +301,15 @@ class ItemInfoView : UIView {
 			shippingLabel.leftAnchor.constraint(equalTo: shippingImg.rightAnchor, constant: 8),
 
 			sellerLabel.topAnchor.constraint(equalTo: shippingLabel.bottomAnchor, constant: 16),
-			sellerLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16)
+			sellerLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
+
+			sellerSalesLabel.topAnchor.constraint(equalTo: sellerLabel.bottomAnchor, constant: 4),
+			sellerSalesLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
+
+			separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
+			separatorView.leftAnchor.constraint(equalTo: leftAnchor),
+			separatorView.rightAnchor.constraint(equalTo: rightAnchor),
+			separatorView.heightAnchor.constraint(equalToConstant: 1)
 		])
 
 	}
@@ -303,14 +343,13 @@ class ItemInfoView : UIView {
 		shippingLabel.text = freeShipping ? "Envio gratis" : "llega entre"
 	}
 
-	func setSeller(nickname: String) {
+	func setSeller(_ seller: ItemSeller) {
 
-		DispatchQueue.main.async { [weak self] in
+		sellerLabel.text = "Vendido por \(seller.nickname)"
 
-			self?.sellerLabel.text = "Vendido por \(nickname)"
-		}
+		let sales = seller.seller_reputation?.metrics?.sales.completed ?? 0
 
-
+		sellerSalesLabel.text = "\(sales) ventas"
 	}
 
 	required init?(coder: NSCoder) {
