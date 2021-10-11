@@ -11,6 +11,8 @@ class ItemDescriptionView : UIView {
 
 	var onTextHeight: ((CGFloat) -> Void)?
 
+	private var _description = ""
+
 	// MARK: Components
 
 	private lazy var sectionTitleLabel: UILabel = {
@@ -69,6 +71,7 @@ class ItemDescriptionView : UIView {
 	}()
 
 	override init(frame: CGRect) {
+
 		super.init(frame: frame)
 
 		setLayout()
@@ -102,17 +105,24 @@ class ItemDescriptionView : UIView {
 
 	}
 
+	func relayout() {
+		
+		setDescription(_description)
+	}
+
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
 	func setDescription(_ description: String) {
 
+		_description = description
+
 		descriptionText.text = description
 
 		Logger.log("description \(bounds.width)")
 
-		let height = StringHeight.getHeight(from: description, font: .body, width: bounds.width)
+		let height = StringHeight.getHeight(from: description, font: .body, width: bounds.width) + 132
 
 		onTextHeight?(height)
 	}

@@ -29,6 +29,7 @@ struct SearchResult : Codable {
 	var price: Int
 	var currency_id: String
 	var thumbnail: String
+	var permalink: String
 	var accepts_mercadopago: Bool
 	var installments: Installments?
 	var shipping: Shipping?

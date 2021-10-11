@@ -43,4 +43,9 @@ extension UIColor {
 
 		return UIColor(red: 0.00, green: 0.52, blue: 0.96, alpha: 1.00)
 	}
+
+	open class var mlGlitter: UIColor {
+
+		return UIColor(red: 0.89, green: 0.93, blue: 0.99, alpha: 1.00)
+	}
 }

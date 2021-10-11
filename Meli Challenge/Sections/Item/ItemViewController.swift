@@ -91,6 +91,19 @@ class ItemViewController: UIViewController {
 		setItem()
     }
 
+	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+		super.viewWillTransition(to: size, with: coordinator)
+
+		DispatchQueue.main.async { [weak self] in
+
+			self?.descriptionView.relayout()
+
+			self?.questionsView.relayout()
+
+			self?.view.layoutIfNeeded()
+		}
+	}
+
 	// MARK: Layout
 
 	private func setLayout() {
@@ -136,7 +149,7 @@ class ItemViewController: UIViewController {
 
 			InfoView.leftAnchor.constraint(equalTo: view.leftAnchor),
 			InfoView.rightAnchor.constraint(equalTo: view.rightAnchor),
-			InfoView.heightAnchor.constraint(equalToConstant: 356),
+			InfoView.heightAnchor.constraint(equalToConstant: 480),
 
 			sellerInfoView.leftAnchor.constraint(equalTo: view.leftAnchor),
 			sellerInfoView.rightAnchor.constraint(equalTo: view.rightAnchor),
@@ -172,9 +185,14 @@ class ItemViewController: UIViewController {
 			self?.handleFavorite()
 		}
 
+		InfoView.onShare = { [weak self] in
+
+			self?.openShare()
+		}
+
 		descriptionView.onTextHeight = { [weak self] height in
 
-			self?.descriptionViewHeightAnchor.constant = height + 100
+			self?.descriptionViewHeightAnchor.constant = height
 		}
 
 		questionsView.onTotalHeight = { [weak self] height in
@@ -255,6 +273,30 @@ class ItemViewController: UIViewController {
 
 	private func handleFavorite() {
 
+	}
+
+	private func openShare() {
+
+		guard let result = viewModel.currentItem.value else {
+			return
+		}
+
+		guard let url = URL(string: result.permalink) else {
+			return
+		}
+
+		let activity = UIActivityViewController(activityItems: [url], applicationActivities: [])
+
+		if let popover = activity.popoverPresentationController {
+
+			popover.sourceView = self.view
+
+			popover.sourceRect = self.view.bounds
+
+			popover.permittedArrowDirections = []
+		}
+
+		present(activity, animated: true, completion: nil)
 	}
 
 }

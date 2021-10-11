@@ -11,6 +11,8 @@ class ItemQuestionsView : UIView {
 
 	private var _viewModel: ItemViewModel
 
+	private var _questions: [ItemQuestion]?
+	
 	var onTotalHeight: ((CGFloat) -> Void)?
 
 	// MARK: Components
@@ -62,7 +64,7 @@ class ItemQuestionsView : UIView {
 			sectionTitleLabel.topAnchor.constraint(equalTo: topAnchor),
 			sectionTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
 			sectionTitleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -16),
-			sectionTitleLabel.heightAnchor.constraint(equalToConstant: 17),
+			sectionTitleLabel.heightAnchor.constraint(equalToConstant: 19),
 
 			questionsTableView.topAnchor.constraint(equalTo: sectionTitleLabel.bottomAnchor, constant: 16),
 			questionsTableView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
@@ -71,17 +73,28 @@ class ItemQuestionsView : UIView {
 		])
 	}
 
+	func relayout() {
+
+		guard let questions = _questions else {
+			return
+		}
+
+		handleSectionHeight(questions)
+	}
+
 	private func handleQuestions(_ questions: [ItemQuestion]) {
 
-		var filterQuestions = questions.filter({  $0.status == "ANSWERED" })
+		var questionsFiltered = questions.filter({  $0.status == "ANSWERED" })
 
-		filterQuestions = Array(filterQuestions.prefix(3))
+		questionsFiltered = Array(questionsFiltered.prefix(3))
+
+		_questions = questionsFiltered
 
 		DispatchQueue.main.async { [weak self] in
 
-			self?.handleSectionHeight(filterQuestions)
+			self?.handleSectionHeight(questionsFiltered)
 
-			self?.questionsTableView.questions = filterQuestions
+			self?.questionsTableView.questions = questionsFiltered
 		}
 	}
 

@@ -9,6 +9,8 @@ import UIKit
 
 class ItemInfoView : UIView {
 
+	var onShare: (() -> Void)?
+
 	// MARK: Components
 
 	private lazy var stateLabel: UILabel = {
@@ -214,6 +216,10 @@ class ItemInfoView : UIView {
 		return label
 	}()
 
+	private lazy var buyBtn = MLButton(frame: .zero, title: "Comprar ahora", bgColor: .mlBlue, textColor: .white)
+
+	private lazy var addToCartBtn = MLButton(frame: .zero, title: "Agregar al carrito", bgColor: .mlGlitter, textColor: .mlBlue)
+
 	private lazy var separatorView: UIView = {
 
 		let view  = UIView()
@@ -229,6 +235,8 @@ class ItemInfoView : UIView {
 		super.init(frame: frame)
 
 		setLayout()
+
+		shareBtn.addTarget(self, action: #selector(shareTap), for: .touchUpInside)
 	}
 
 	// MARK: Layout
@@ -258,6 +266,10 @@ class ItemInfoView : UIView {
 		addSubview(sellerLabel)
 
 		addSubview(sellerSalesLabel)
+
+		addSubview(buyBtn)
+
+		addSubview(addToCartBtn)
 
 		addSubview(separatorView)
 
@@ -306,12 +318,29 @@ class ItemInfoView : UIView {
 			sellerSalesLabel.topAnchor.constraint(equalTo: sellerLabel.bottomAnchor, constant: 4),
 			sellerSalesLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
 
+			buyBtn.topAnchor.constraint(equalTo: sellerSalesLabel.bottomAnchor, constant: 16),
+			buyBtn.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
+			buyBtn.rightAnchor.constraint(equalTo: rightAnchor, constant: -16),
+			buyBtn.heightAnchor.constraint(equalToConstant: 44),
+
+			addToCartBtn.topAnchor.constraint(equalTo: buyBtn.bottomAnchor, constant: 8),
+			addToCartBtn.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
+			addToCartBtn.rightAnchor.constraint(equalTo: rightAnchor, constant: -16),
+			addToCartBtn.heightAnchor.constraint(equalToConstant: 44),
+
 			separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
 			separatorView.leftAnchor.constraint(equalTo: leftAnchor),
 			separatorView.rightAnchor.constraint(equalTo: rightAnchor),
 			separatorView.heightAnchor.constraint(equalToConstant: 1)
 		])
 
+	}
+
+	// MARK: Actions
+
+	@objc private func shareTap() {
+
+		onShare?()
 	}
 
 	func setInfo(_ result: SearchResult) {
