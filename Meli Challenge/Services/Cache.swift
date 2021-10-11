@@ -44,7 +44,7 @@ class Cache {
 
 		} catch {
 
-			Logger.log(.error, error: error)
+			Logger.error(error)
 
 			return error
 		}
@@ -59,7 +59,7 @@ class Cache {
 
 		guard let data = userDefaults.data(forKey: forKey) else {
 
-			Logger.log(.error, error: CacheError.emptyData)
+			Logger.error(CacheError.emptyData)
 
 			return nil
 		}
@@ -72,7 +72,7 @@ class Cache {
 
 		} catch {
 
-			Logger.log(.error, error: error)
+			Logger.error(error)
 
 			return nil
 		}

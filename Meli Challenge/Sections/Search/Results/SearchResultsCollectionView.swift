@@ -100,7 +100,7 @@ extension SearchResultsCollectionView : UICollectionViewDataSource {
 
 			resultCell.onFavorite = { [weak self] isFavorite in
 
-				Logger.log(.message, msg: "\(result)")
+				Logger.log("\(result)")
 
 				self?.handleFavorite(result, isFavorite: isFavorite)
 			}

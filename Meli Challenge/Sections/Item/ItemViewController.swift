@@ -65,7 +65,7 @@ class ItemViewController: UIViewController {
 
 	private func setItem() {
 
-		Logger.log(.message, msg: "set item \(viewModel?.resultSelected.value?.id)")
+		Logger.log("set item \(viewModel?.resultSelected.value?.id)")
 
 		guard let result = viewModel?.resultSelected.value else {
 			return
@@ -75,7 +75,7 @@ class ItemViewController: UIViewController {
 
 		let isFavorite = viewModel?.favoriteId != nil
 
-		Logger.log(.message, msg: "\(isFavorite) \(viewModel?.favoriteId)")
+		Logger.log("\(isFavorite) \(viewModel?.favoriteId)")
 
 		headerView.isFavorite = isFavorite
 	}

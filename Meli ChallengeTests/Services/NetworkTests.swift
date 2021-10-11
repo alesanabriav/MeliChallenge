@@ -41,7 +41,7 @@ class NetworkTests: XCTestCase {
 
 				XCTFail()
 
-				Logger.log(.error, error: err)
+				Logger.error(err)
 			}
 		}
 

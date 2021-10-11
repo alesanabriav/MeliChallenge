@@ -207,7 +207,7 @@ extension SearchViewController : SearchHeaderViewDelegate {
 
 	func searchFocus() {
 
-		Logger.log(.message, msg: "focus")
+		Logger.log("search focus")
 
 		if let query = viewModel.searchQuery.value, query.isEmpty {
 
@@ -231,7 +231,7 @@ extension SearchViewController : SearchHeaderViewDelegate {
 
 	func searchEnd(_ query: String) {
 
-		Logger.log(.message, msg: "search end: \(query)")
+		Logger.log("search end: \(query)")
 
 		activityIndicator.startAnimating()
 

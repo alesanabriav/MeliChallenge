@@ -37,14 +37,6 @@
                BlueprintName = "Meli ChallengeTests"
                ReferencedContainer = "container:Meli Challenge.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "FavoritesRepositoryTests">
-               </Test>
-               <Test
-                  Identifier = "SearchRepositoryTests/testShouldSearchByQuery()">
-               </Test>
-            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">
