@@ -8,6 +8,7 @@ Pasos que realice para hacer la prueba:
 - Luego los repositories, View models, models.
 - Luego las vistas, donde empece con el search, busquedas recientes, lista de resultados, de esto ya pase a la vista de detalle.
 - La vista de detalle las separe según las sub-secciones que tiene y de las que encontre endpoints para traer la información extra.
+- Se hicieron los tests en paralelo y hizo check de memory leaks.
 
 ## Arquitectura
 
@@ -30,7 +31,7 @@ El proyecto lo separe por:
 
 - `Network`: Llamadas de red a endpoints.
 - `Cache`: Almacenamiento local. (se uso para favoritos y busquedas recientes).
-- 
+
 
 ## Screenshots
 
@@ -46,3 +47,9 @@ El proyecto lo separe por:
 ![simulator_screenshot_ED617D82-16EB-4E77-9715-4552FA9F912C](https://user-images.githubusercontent.com/1097809/137012147-28834f36-cb6f-4ec8-ab15-b1ac0f787a58.png)
 ![simulator_screenshot_9EDC089E-BA3A-4E9C-B19A-7D6B3B2B2DBB](https://user-images.githubusercontent.com/1097809/137012184-79d43f58-4fd7-40de-b32a-f53b5927212f.png)
 ![simulator_screenshot_5D753EAD-9679-4A6A-BB33-97D9B5B017AE](https://user-images.githubusercontent.com/1097809/137012199-428b313d-30d0-45b3-9253-21ee44e47cb7.png)
+
+## Tests & Memory footprint
+
+<img width="371" alt="Screen Shot 2021-10-12 at 2 13 17 PM" src="https://user-images.githubusercontent.com/1097809/137015288-7bb630f6-8252-4389-9c59-fa02505fc5a8.png">
+
+<img width="372" alt="Screen Shot 2021-10-12 at 2 13 45 PM" src="https://user-images.githubusercontent.com/1097809/137015364-7c12fc35-8c9e-4518-a7bb-9957e754ff5f.png">
