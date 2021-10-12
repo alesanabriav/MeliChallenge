@@ -53,4 +53,10 @@ extension UIColor {
 
 		return UIColor(red: 0.61, green: 0.61, blue: 0.61, alpha: 1.00)
 	}
+
+	open class var mlLilac: UIColor {
+
+		return UIColor(red: 0.91, green: 0.91, blue: 0.91, alpha: 1.00)
+	}
+
 }

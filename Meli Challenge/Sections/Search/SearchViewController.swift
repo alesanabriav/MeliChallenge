@@ -41,6 +41,15 @@ class SearchViewController : UIViewController {
 		return recentView
 	}()
 
+	private lazy var emptyState: SearchEmptyState = {
+
+		let view = SearchEmptyState()
+
+		view.isHidden = true
+
+		return view
+	}()
+
 	private lazy var activityIndicator: UIActivityIndicatorView = {
 
 		let indicatorView = UIActivityIndicatorView()
@@ -97,6 +106,8 @@ class SearchViewController : UIViewController {
 
 		view.addSubview(recentView)
 
+		view.addSubview(emptyState)
+
 		NSLayoutConstraint.activate([
 			headerView.topAnchor.constraint(equalTo: view.topAnchor),
 			headerView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -114,7 +125,12 @@ class SearchViewController : UIViewController {
 			recentView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
 			recentView.leftAnchor.constraint(equalTo: view.leftAnchor),
 			recentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-			recentView.rightAnchor.constraint(equalTo: view.rightAnchor)
+			recentView.rightAnchor.constraint(equalTo: view.rightAnchor),
+
+			emptyState.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+			emptyState.leftAnchor.constraint(equalTo: view.leftAnchor),
+			emptyState.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			emptyState.rightAnchor.constraint(equalTo: view.rightAnchor)
 		])
 	}
 
@@ -126,9 +142,15 @@ class SearchViewController : UIViewController {
 
 			if res.results.count > 0 {
 
+				self?.showEmptyState(false)
+
 				self?.showRecent(false)
 
 				self?.showResults()
+
+			} else {
+
+				self?.showEmptyState()
 			}
 		}
 
@@ -140,6 +162,17 @@ class SearchViewController : UIViewController {
 		viewModel.resultSelected.observe { [weak self] result in
 
 			self?.openItemDetail()
+		}
+	}
+
+	private func showEmptyState(_ show: Bool = true) {
+
+		DispatchQueue.main.async { [weak self] in
+
+			self?.activityIndicator.stopAnimating()
+
+			self?.emptyState.isHidden = !show
+			
 		}
 	}
 
