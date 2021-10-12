@@ -15,6 +15,8 @@
 		7148DE192714EB38008F3977 /* ItemQuestionsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148DE182714EB38008F3977 /* ItemQuestionsTableView.swift */; };
 		7148DE1B2714EFA8008F3977 /* ItemQuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148DE1A2714EFA8008F3977 /* ItemQuestionsView.swift */; };
 		7148DE1D2714FD2A008F3977 /* MLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148DE1C2714FD2A008F3977 /* MLButton.swift */; };
+		7148DE2027150551008F3977 /* ItemRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148DE1F27150551008F3977 /* ItemRepositoryTests.swift */; };
+		7148DE2227150A52008F3977 /* DescriptionResponseJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148DE2127150A52008F3977 /* DescriptionResponseJSON.swift */; };
 		71CCCA5B2710F344009885D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA5A2710F344009885D2 /* AppDelegate.swift */; };
 		71CCCA5D2710F344009885D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA5C2710F344009885D2 /* SceneDelegate.swift */; };
 		71CCCA5F2710F344009885D2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCCA5E2710F344009885D2 /* MainViewController.swift */; };
@@ -83,6 +85,8 @@
 		7148DE182714EB38008F3977 /* ItemQuestionsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemQuestionsTableView.swift; sourceTree = "<group>"; };
 		7148DE1A2714EFA8008F3977 /* ItemQuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemQuestionsView.swift; sourceTree = "<group>"; };
 		7148DE1C2714FD2A008F3977 /* MLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLButton.swift; sourceTree = "<group>"; };
+		7148DE1F27150551008F3977 /* ItemRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepositoryTests.swift; sourceTree = "<group>"; };
+		7148DE2127150A52008F3977 /* DescriptionResponseJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionResponseJSON.swift; sourceTree = "<group>"; };
 		71CCCA572710F344009885D2 /* Meli Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meli Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CCCA5A2710F344009885D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71CCCA5C2710F344009885D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +166,14 @@
 				7148DE162714EB28008F3977 /* ItemQuestionsTableViewCell.swift */,
 			);
 			path = Questions;
+			sourceTree = "<group>";
+		};
+		7148DE1E2715053A008F3977 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				7148DE1F27150551008F3977 /* ItemRepositoryTests.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 		71CCCA4E2710F344009885D2 = {
@@ -322,6 +334,7 @@
 		71D3101B2711F262002689FE /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				7148DE1E2715053A008F3977 /* Item */,
 				71D8F3E02713C7B00084DDE7 /* Favorites */,
 				71D3101C2711F268002689FE /* Search */,
 			);
@@ -354,6 +367,7 @@
 				71D8F3D3271339BC0084DDE7 /* CacheTestModel.swift */,
 				71E29C6E27149EF800BF0CAD /* SellerResponseJSON.swift */,
 				7148DE142714E9F2008F3977 /* QuestionsResponseJSON.swift */,
+				7148DE2127150A52008F3977 /* DescriptionResponseJSON.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -544,10 +558,12 @@
 				71D3100B2711E246002689FE /* NetworkTests.swift in Sources */,
 				7148DE152714E9F2008F3977 /* QuestionsResponseJSON.swift in Sources */,
 				71D8F3D2271336B60084DDE7 /* CacheTests.swift in Sources */,
+				7148DE2227150A52008F3977 /* DescriptionResponseJSON.swift in Sources */,
 				71D8F3D4271339BC0084DDE7 /* CacheTestModel.swift in Sources */,
 				71D310262711F5BC002689FE /* SearchResponseJSON.swift in Sources */,
 				71D310112711E7A1002689FE /* LoggerTests.swift in Sources */,
 				71D81B232711FC01007CE54D /* ObservableTests.swift in Sources */,
+				7148DE2027150551008F3977 /* ItemRepositoryTests.swift in Sources */,
 				71D8F3E22713C7C50084DDE7 /* FavoritesRepositoryTests.swift in Sources */,
 				71D81B252711FDEF007CE54D /* SearchViewModelTests.swift in Sources */,
 				71D3101E2711F282002689FE /* SearchRepositoryTests.swift in Sources */,

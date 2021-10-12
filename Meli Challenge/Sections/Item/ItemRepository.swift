@@ -13,7 +13,7 @@ class ItemRepository {
 
 	func getSeller(by id: Int, completion: @escaping (Result<ItemSeller, Error>) -> Void) {
 
-		let path = "/sites/\(Network.Site.COL.rawValue)/search?seller_id=\(id)&limit=1"
+		let path = "/sites/\(Network.Site.COL.rawValue)/search?seller_id=\(id)&limit=10"
 
 		network.get(ItemSellerResponse.self, from: path) { res in
 

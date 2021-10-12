@@ -21,7 +21,7 @@ class FavoritesRepositoryTests: XCTestCase {
 
 		let repo = FavoritesRepository()
 
-		let result = SearchResult(id: "MCO7", site_id: "MCO", title: "iPhone 13", seller: nil, price: 4700000, currency_id: "COP", thumbnail: "", accepts_mercadopago: true, installments: nil, shipping: nil, available_quantity: 5, buying_mode: "", condition: "new")
+		let result = SearchResult(id: "MCO7", site_id: "MCO", title: "iPhone 13", seller: nil, price: 4700000, currency_id: "COP", thumbnail: "", permalink: "", accepts_mercadopago: true, installments: nil, shipping: nil, available_quantity: 5, sold_quantity: 0, buying_mode: "", condition: "new")
 
 		repo.storeFavorite(result: result)
 
@@ -34,7 +34,7 @@ class FavoritesRepositoryTests: XCTestCase {
 
 		let repo = FavoritesRepository()
 
-		let result = SearchResult(id: "MCO7", site_id: "MCO", title: "iPhone 13", seller: nil, price: 4700000, currency_id: "COP", thumbnail: "", accepts_mercadopago: true, installments: nil, shipping: nil, available_quantity: 5, buying_mode: "", condition: "new")
+		let result = SearchResult(id: "MCO7", site_id: "MCO", title: "iPhone 13", seller: nil, price: 4700000, currency_id: "COP", thumbnail: "", permalink: "", accepts_mercadopago: true, installments: nil, shipping: nil, available_quantity: 5, sold_quantity: 0, buying_mode: "", condition: "new")
 
 		repo.storeFavorite(result: result)
 
@@ -47,10 +47,10 @@ class FavoritesRepositoryTests: XCTestCase {
 
 		let repo = FavoritesRepository()
 
-		let result1 = SearchResult(id: "MCO7", site_id: "MCO", title: "iPhone 13", seller: nil, price: 4700000, currency_id: "COP", thumbnail: "", accepts_mercadopago: true, installments: nil, shipping: nil, available_quantity: 5, buying_mode: "", condition: "new")
+		let result1 = SearchResult(id: "MCO7", site_id: "MCO", title: "iPhone 13", seller: nil, price: 4700000, currency_id: "COP", thumbnail: "", permalink: "", accepts_mercadopago: true, installments: nil, shipping: nil, available_quantity: 5, sold_quantity: 0, buying_mode: "", condition: "new")
 
 
-		let result2 = SearchResult(id: "MCO78", site_id: "MCO", title: "iPhone 11", seller: nil, price: 4700000, currency_id: "COP", thumbnail: "", accepts_mercadopago: true, installments: nil, shipping: nil, available_quantity: 5, buying_mode: "", condition: "new")
+		let result2 = SearchResult(id: "MCO78", site_id: "MCO", title: "iPhone 11", seller: nil, price: 4700000, currency_id: "COP", thumbnail: "", permalink: "", accepts_mercadopago: true, installments: nil, shipping: nil, available_quantity: 5, sold_quantity: 0, buying_mode: "", condition: "new")
 
 
 		repo.storeFavorite(result: result1)
