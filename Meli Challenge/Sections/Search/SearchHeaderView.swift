@@ -67,6 +67,8 @@ class SearchHeaderView : UIView {
 
 		textField.backgroundColor = .white
 
+		textField.textColor = .black
+
 		textField.font = .body
 
 		textField.attributedPlaceholder = NSAttributedString(string: "Buscar en Mercado Libre", attributes: [

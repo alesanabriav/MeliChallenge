@@ -22,6 +22,8 @@ class ItemQuestionsTableView: UITableView {
 
 		translatesAutoresizingMaskIntoConstraints = false
 
+		backgroundColor = .white
+
 		separatorStyle = .none
 
 		isScrollEnabled = false

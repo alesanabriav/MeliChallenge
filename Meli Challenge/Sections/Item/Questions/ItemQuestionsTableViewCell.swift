@@ -81,6 +81,8 @@ class ItemQuestionsTableViewCell: UITableViewCell {
 
 	private func setLayout() {
 
+		backgroundColor = .clear
+
 		addSubview(questionText)
 
 		addSubview(answerText)
@@ -109,5 +111,9 @@ class ItemQuestionsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+
+	override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+		
+	}
 
 }

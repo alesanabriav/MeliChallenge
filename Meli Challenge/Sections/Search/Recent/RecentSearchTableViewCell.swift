@@ -82,6 +82,8 @@ class RecentSearchTableViewCell: UITableViewCell {
 
 	private func setLayout() {
 
+		backgroundColor = .clear
+
 		addSubview(clockImg)
 
 		addSubview(queryLabel)
