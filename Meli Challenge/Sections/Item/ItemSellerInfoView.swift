@@ -243,6 +243,25 @@ class ItemSellerInfoView : UIView {
 
 			statusStackView.isHidden = true
 		}
+
+		if let levelId = seller.seller_reputation?.level_id {
+
+			let level = levelId.split(separator: "_")
+
+			Logger.log("seller level \(level)")
+
+			if let l = level.first {
+
+				let type = ItemSellerRating.RatingType(rawValue: Int(l) ?? 1) ?? .veryBad
+
+				Logger.log("seller level \(type)")
+
+				ratingView.type = type
+			}
+
+
+
+		}
 		
 	}
 

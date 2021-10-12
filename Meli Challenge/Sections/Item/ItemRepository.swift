@@ -20,6 +20,8 @@ class ItemRepository {
 			switch res {
 			case .success(let sellerRes):
 
+				Logger.log("seller level \(sellerRes.seller.seller_reputation?.level_id)")
+
 				completion(.success(sellerRes))
 
 			case .failure(let err):
