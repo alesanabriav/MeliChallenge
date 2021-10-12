@@ -21,6 +21,8 @@ class ItemViewModel {
 
 	var sellerErr = Observable<Error>()
 
+	var selllerResults = Observable<[SearchResult]>()
+
 	var description = Observable<String>("")
 
 	var questions = Observable<[ItemQuestion]>()
@@ -31,11 +33,13 @@ class ItemViewModel {
 
 			switch res {
 				
-			case .success(let seller):
+			case .success(let sellerRes):
 
-				self?.seller.value = seller
+				self?.seller.value = sellerRes.seller
 
-				Logger.log("seller \(seller)")
+				self?.selllerResults.value = sellerRes.results
+
+				Logger.log("seller \(sellerRes)")
 
 			case .failure(let err):
 

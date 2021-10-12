@@ -47,7 +47,7 @@ class ItemViewController: UIViewController {
 
 		stackView.spacing = 16
 
-		stackView.accessibilityIdentifier = ""
+		stackView.accessibilityIdentifier = "ItemViewController_containerStackView"
 
 		return stackView
 	}()
@@ -57,6 +57,13 @@ class ItemViewController: UIViewController {
 	private lazy var InfoView = ItemInfoView()
 
 	private lazy var sellerInfoView = ItemSellerInfoView()
+
+	private lazy var sellerItemsView: ItemSellerItemsView =  {
+
+		let view = ItemSellerItemsView(frame: .zero, viewModel: viewModel)
+
+		return view
+	}()
 
 	private lazy var descriptionView = ItemDescriptionView()
 
@@ -122,6 +129,8 @@ class ItemViewController: UIViewController {
 
 		containerStackView.addArrangedSubview(sellerInfoView)
 
+		containerStackView.addArrangedSubview(sellerItemsView)
+
 		containerStackView.addArrangedSubview(descriptionView)
 
 		containerStackView.addArrangedSubview(questionsView)
@@ -154,6 +163,10 @@ class ItemViewController: UIViewController {
 			sellerInfoView.leftAnchor.constraint(equalTo: view.leftAnchor),
 			sellerInfoView.rightAnchor.constraint(equalTo: view.rightAnchor),
 			sellerInfoView.heightAnchor.constraint(equalToConstant: 120),
+
+			sellerItemsView.leftAnchor.constraint(equalTo: view.leftAnchor),
+			sellerItemsView.rightAnchor.constraint(equalTo: view.rightAnchor),
+			sellerItemsView.heightAnchor.constraint(equalToConstant: 320),
 
 			descriptionView.leftAnchor.constraint(equalTo: view.leftAnchor),
 			descriptionView.rightAnchor.constraint(equalTo: view.rightAnchor),
@@ -297,6 +310,11 @@ class ItemViewController: UIViewController {
 		}
 
 		present(activity, animated: true, completion: nil)
+	}
+
+	deinit {
+
+		Logger.log("Deinit ItemViewController")
 	}
 
 }

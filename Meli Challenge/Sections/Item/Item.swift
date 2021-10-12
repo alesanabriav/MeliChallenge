@@ -14,6 +14,7 @@ struct ItemDescription : Codable {
 
 struct ItemSellerResponse : Codable {
 	var seller: ItemSeller
+	var results: [SearchResult]?
 }
 
 struct ItemSeller : Codable {

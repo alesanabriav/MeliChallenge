@@ -11,7 +11,7 @@ class ItemRepository {
 
 	private lazy var network = Network.shared
 
-	func getSeller(by id: Int, completion: @escaping (Result<ItemSeller, Error>) -> Void) {
+	func getSeller(by id: Int, completion: @escaping (Result<ItemSellerResponse, Error>) -> Void) {
 
 		let path = "/sites/\(Network.Site.COL.rawValue)/search?seller_id=\(id)&limit=10"
 
@@ -20,7 +20,7 @@ class ItemRepository {
 			switch res {
 			case .success(let sellerRes):
 
-				completion(.success(sellerRes.seller))
+				completion(.success(sellerRes))
 
 			case .failure(let err):
 

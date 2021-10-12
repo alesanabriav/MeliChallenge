@@ -14,22 +14,34 @@ class SearchViewControllerTests: XCTestCase {
 
 		let exp = expectation(description: "deinit vc")
 
-		Logger.log("onDeinit 1 __________")
+		exp.expectedFulfillmentCount = 2
+
+		let start = Date()
+
+		Logger.log("onDeinit 1 __________ \(start)")
 
 		var vc: SearchViewController? = SearchViewController()
 
-		vc?.viewDidLoad()
-
 		vc?.onDeinit = {
+
+			let end = Date()
 
 			exp.fulfill()
 
-			Logger.log("onDeinit 2 ______")
+			Logger.log("onDeinit 2 _____\(end)")
+
 		}
 
-		vc = nil
+		DispatchQueue.main.async {
 
-		waitForExpectations(timeout: 3)
+			vc = nil
+
+			XCTAssertNil(vc)
+
+			exp.fulfill()
+		}
+
+		waitForExpectations(timeout: 2, handler: nil)
     }
 
 }

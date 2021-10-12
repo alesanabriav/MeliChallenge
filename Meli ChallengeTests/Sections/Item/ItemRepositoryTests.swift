@@ -33,11 +33,11 @@ class ItemRepositoryTests: XCTestCase {
 
 			switch res {
 
-			case .success(let seller):
+			case .success(let sellerRes):
 
-				XCTAssertEqual(seller.nickname, "CELUMOVIL STORE")
+				XCTAssertEqual(sellerRes.seller.nickname, "CELUMOVIL STORE")
 
-				XCTAssertEqual(seller.id, id)
+				XCTAssertEqual(sellerRes.seller.id, id)
 
 				exp.fulfill()
 
