@@ -200,7 +200,7 @@ class SearchViewController : UIViewController {
 
 		let itemVC = ItemViewController()
 
-		itemVC.viewModel.currentItem.value = viewModel.resultSelected.value
+		itemVC.item = viewModel.resultSelected.value
 
 		navigationController?.pushViewController(itemVC, animated: true)
 	}

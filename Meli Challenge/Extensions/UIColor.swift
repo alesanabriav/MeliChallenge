@@ -48,4 +48,9 @@ extension UIColor {
 
 		return UIColor(red: 0.89, green: 0.93, blue: 0.99, alpha: 1.00)
 	}
+
+	open class var mlGray: UIColor {
+
+		return UIColor(red: 0.61, green: 0.61, blue: 0.61, alpha: 1.00)
+	}
 }

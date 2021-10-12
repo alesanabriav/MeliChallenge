@@ -53,6 +53,12 @@ class ItemSellerItemsView : UIView {
 			self?.handleSeller()
 		}
 
+		ItemscollectionView.onResultSelected = { [weak self] result in
+
+			self?._viewModel.selectedItem.value = result
+			
+		}
+
 	}
 
 	 // MARK: Layout

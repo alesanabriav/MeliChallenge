@@ -90,10 +90,6 @@ extension SearchResultsCollectionView : UICollectionViewDataSource {
 
 			let isFav = favoritesIds?.contains(result.id) ?? false
 
-			print("is fav", result.title, result.id, isFav)
-
-			// MCO608640998
-
 			resultCell.isFavorite = isFav
 
 			resultCell.setCell(result)

@@ -41,6 +41,7 @@
 		71D444C92715D1F200D74458 /* ItemSellerItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D444C82715D1F200D74458 /* ItemSellerItemsView.swift */; };
 		71D444CB2715D29A00D74458 /* ItemSellerItemsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D444CA2715D29A00D74458 /* ItemSellerItemsCollectionView.swift */; };
 		71D444CD2715D2B000D74458 /* ItemSellerItemsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D444CC2715D2B000D74458 /* ItemSellerItemsCollectionViewCell.swift */; };
+		71D444CF2715EA9400D74458 /* ItemSellerRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D444CE2715EA9400D74458 /* ItemSellerRatingView.swift */; };
 		71D81B202711FB85007CE54D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D81B1F2711FB85007CE54D /* Observable.swift */; };
 		71D81B232711FC01007CE54D /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D81B222711FC01007CE54D /* ObservableTests.swift */; };
 		71D81B252711FDEF007CE54D /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D81B242711FDEF007CE54D /* SearchViewModelTests.swift */; };
@@ -117,6 +118,7 @@
 		71D444C82715D1F200D74458 /* ItemSellerItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSellerItemsView.swift; sourceTree = "<group>"; };
 		71D444CA2715D29A00D74458 /* ItemSellerItemsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSellerItemsCollectionView.swift; sourceTree = "<group>"; };
 		71D444CC2715D2B000D74458 /* ItemSellerItemsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSellerItemsCollectionViewCell.swift; sourceTree = "<group>"; };
+		71D444CE2715EA9400D74458 /* ItemSellerRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSellerRatingView.swift; sourceTree = "<group>"; };
 		71D81B1F2711FB85007CE54D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		71D81B222711FC01007CE54D /* ObservableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
 		71D81B242711FDEF007CE54D /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				71D8F3DB271351B50084DDE7 /* ItemHeaderView.swift */,
 				71E29C6C27148D1200BF0CAD /* ItemInfoView.swift */,
 				71E29C702714D3DB00BF0CAD /* ItemSellerInfoView.swift */,
+				71D444CE2715EA9400D74458 /* ItemSellerRatingView.swift */,
 				7148DE0D2714DFAD008F3977 /* ItemDescriptionView.swift */,
 				71E29C6427147CA800BF0CAD /* ItemRepository.swift */,
 				71E29C6627147CBF00BF0CAD /* ItemViewModel.swift */,
@@ -552,6 +555,7 @@
 				7148DE0E2714DFAD008F3977 /* ItemDescriptionView.swift in Sources */,
 				71D310142711EFEA002689FE /* SearchResultsView.swift in Sources */,
 				71D3100F2711E694002689FE /* Logger.swift in Sources */,
+				71D444CF2715EA9400D74458 /* ItemSellerRatingView.swift in Sources */,
 				71D8F3DC271351B50084DDE7 /* ItemHeaderView.swift in Sources */,
 				7148DE1B2714EFA8008F3977 /* ItemQuestionsView.swift in Sources */,
 				71D81B2727120453007CE54D /* SearchHeaderView.swift in Sources */,

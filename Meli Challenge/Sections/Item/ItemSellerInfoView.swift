@@ -151,6 +151,8 @@ class ItemSellerInfoView : UIView {
 		return label
 	}()
 
+	private lazy var ratingView = ItemSellerRating()
+
 	private lazy var separatorView: UIView = {
 
 		let view  = UIView()
@@ -191,6 +193,8 @@ class ItemSellerInfoView : UIView {
 		statusStackView.addArrangedSubview(statusLabel)
 
 		containerStackView.addArrangedSubview(statusStackView)
+
+		containerStackView.addArrangedSubview(ratingView)
 
 		NSLayoutConstraint.activate([
 			sectionTitleLabel.topAnchor.constraint(equalTo: topAnchor),

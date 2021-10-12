@@ -57,7 +57,7 @@ class SearchHeaderView : UIView {
 
 		textField.layer.cornerRadius = 16
 
-		textField.layer.shadowColor = UIColor.darkGray.cgColor
+		textField.layer.shadowColor = UIColor.mlGray.cgColor
 
 		textField.layer.shadowOffset = CGSize(width: 0, height: 0)
 
@@ -119,7 +119,7 @@ class SearchHeaderView : UIView {
 			searchTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
 			searchTextField.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
 			searchTextFieldDefaultRightAnchor,
-			searchTextField.heightAnchor.constraint(equalToConstant: 30),
+			searchTextField.heightAnchor.constraint(equalToConstant: 32),
 
 			searchImg.widthAnchor.constraint(equalToConstant: 16),
 			searchImg.heightAnchor.constraint(equalToConstant: 16),

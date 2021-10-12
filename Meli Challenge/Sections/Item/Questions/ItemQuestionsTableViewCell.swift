@@ -50,7 +50,7 @@ class ItemQuestionsTableViewCell: UITableViewCell {
 
 		text.font = .placeholder
 
-		text.textColor = .black
+		text.textColor = .mlGray
 
 		text.textContainer.lineFragmentPadding = .zero
 

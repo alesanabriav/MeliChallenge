@@ -15,6 +15,8 @@ class ItemViewModel {
 
 	var currentItem = Observable<SearchResult>()
 
+	var selectedItem = Observable<SearchResult>()
+
 	var favoriteId: String?
 
 	var seller = Observable<ItemSeller>()
@@ -98,4 +100,13 @@ class ItemViewModel {
 		favoriteId = fav.id
 	}
 
+	func storeFavorite(_ result: SearchResult) {
+
+		favoritesRepo.storeFavorite(result: result)
+	}
+
+	func removeFavorite(by id: String) {
+
+		favoritesRepo.removeFavorite(by: id)
+	}
 }

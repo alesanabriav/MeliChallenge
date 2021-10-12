@@ -141,13 +141,13 @@ class ItemSellerItemsCollectionViewCell: UICollectionViewCell {
 
 		containerView.layer.cornerRadius = 4
 
-		containerView.layer.shadowColor = UIColor.darkGray.cgColor
+		containerView.layer.shadowColor = UIColor.mlGray.cgColor
 
 		containerView.layer.shadowOffset = CGSize(width: 0, height: 0)
 
-		containerView.layer.shadowRadius = 3
+		containerView.layer.shadowRadius = 4
 
-		containerView.layer.shadowOpacity = 0.2
+		containerView.layer.shadowOpacity = 0.3
 
 		addSubview(containerView)
 
@@ -168,7 +168,7 @@ class ItemSellerItemsCollectionViewCell: UICollectionViewCell {
 			containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
 			containerView.rightAnchor.constraint(equalTo: rightAnchor),
 
-			thumbImg.topAnchor.constraint(equalTo: containerView.topAnchor),
+			thumbImg.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16),
 			thumbImg.leftAnchor.constraint(equalTo: containerView.leftAnchor),
 			thumbImg.rightAnchor.constraint(equalTo: containerView.rightAnchor),
 			thumbImg.heightAnchor.constraint(equalToConstant: 90),

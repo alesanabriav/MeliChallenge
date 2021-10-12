@@ -21,7 +21,7 @@ class ItemInfoView : UIView {
 
 		label.font = .subheadline
 
-		label.textColor = .mlNero
+		label.textColor = .mlGray
 
 		label.backgroundColor = .clear
 

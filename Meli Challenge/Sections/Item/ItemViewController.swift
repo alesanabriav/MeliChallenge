@@ -9,7 +9,14 @@ import UIKit
 
 class ItemViewController: UIViewController {
 
-	let viewModel = ItemViewModel()
+	var item: SearchResult? {
+
+		didSet {
+			handleItem()
+		}
+	}
+
+	private let viewModel = ItemViewModel()
 
 	// MARK: Components
 
@@ -93,6 +100,11 @@ class ItemViewController: UIViewController {
 		viewModel.description.observe { [weak self] description in
 
 			self?.handleDescription(description)
+		}
+
+		viewModel.selectedItem.observe { [weak self] item in
+
+			self?.openItem(item)
 		}
 
 		setItem()
@@ -234,6 +246,11 @@ class ItemViewController: UIViewController {
 		}
 	}
 
+	private func handleItem() {
+
+		viewModel.currentItem.value = item
+	}
+
 	private func setItem() {
 
 		guard let result = viewModel.currentItem.value else {
@@ -279,6 +296,15 @@ class ItemViewController: UIViewController {
 		navigationController?.pushViewController(searchVC, animated: false)
 	}
 
+	private func openItem(_ item: SearchResult) {
+
+		let itemVC = ItemViewController()
+
+		itemVC.item = item
+
+		navigationController?.pushViewController(itemVC, animated: true)
+	}
+
 	private func handleBack() {
 
 		navigationController?.popViewController(animated: true)
@@ -286,6 +312,25 @@ class ItemViewController: UIViewController {
 
 	private func handleFavorite() {
 
+		guard let result = viewModel.currentItem.value else {
+			return
+		}
+
+		viewModel.getFavoriteId(by: result.id)
+
+		let isFavorite = viewModel.favoriteId != nil
+
+		if !isFavorite {
+
+			viewModel.storeFavorite(result)
+
+		} else {
+
+			viewModel.removeFavorite(by: result.id)
+		}
+
+		headerView.isFavorite = !isFavorite
+		
 	}
 
 	private func openShare() {
